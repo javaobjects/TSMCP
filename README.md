@@ -6,21 +6,27 @@
 
 2. mysql 5.0 +
 
-3. IDEA 2019
+3. 阿里云
 
-4. git
+4. apache-tomcat-9.0.12
 
-5. 阿里云
+5. win10/9/8/7
 
-6. apache-tomcat-9.0.12
+#### 开发工具
 
-7. ssm
+1. IDEA 2019
 
-8. PowerDesigner 15
+2. navicat
 
-9. Axure RP 8
+4. PowerDesigner 15
 
+5. Axure RP 8
 
-测试提交: 呵呵呵
+#### 版本控制工具
 
-测试idea提交
+1. git
+
+#### 使用技术
+
+1. ssm
+
