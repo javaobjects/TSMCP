@@ -14,7 +14,9 @@ public class GeneratorSqlmap {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         // 指定配置文件
-        File configFile = new File("generatorConfig.xml");
+        File configFile = new File("D:\\project\\TSMCP\\src\\generatorConfig.xml");
+        boolean result = configFile.exists();
+        System.out.println(result);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
