@@ -22,6 +22,8 @@
 
 5. Axure RP 8
 
+6. Xshell 6
+
 #### 版本控制工具
 
 1. git
