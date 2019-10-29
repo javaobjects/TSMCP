@@ -27,4 +27,15 @@ public interface TsmcpUserMapper {
     int updateByPrimaryKeySelective(TsmcpUser record);
 
     int updateByPrimaryKey(TsmcpUser record);
+
+    /**
+     * @param user_name
+     * @param user_password
+     * @return Boolean
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     * 用户登录
+     */
+    public TsmcpUser Login(String user_name,String user_password);
 }

@@ -28,7 +28,7 @@
 			System.out.println(emp);
          -->     
          <!-- 1. 加载外部配置文档 -->
-         <context:property-placeholder location="classpath:db.properties"/>
+         <context:property-placeholder location="classpath:com/tencent/db.propertiesb.properties"/>
          <!-- 2. 配置数据源 -->
          <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
          		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
@@ -40,7 +40,7 @@
          <!-- 3. 配置SqlSessionFactory -->   
          <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
          		<property name="dataSource" ref="dataSource"></property>                      <!-- 数据源 -->
-         		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property><!-- mybatis核心配置文件 -->
+         		<property name="configLocation" value="classpath:com/tencent/sqlMapConfig.xmlapConfig.xml"></property><!-- mybatis核心配置文件 -->
          </bean>
                 
          <!-- 3.1 配置SqlSessionTemplate,可省略-->
