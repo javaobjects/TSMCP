@@ -172,4 +172,57 @@ public class TsmcpDailyWork {
     public void setBak(String bak) {
         this.bak = bak == null ? null : bak.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TsmcpDailyWork{" +
+                "id=" + id +
+                ", flag=" + flag +
+                ", createTime=" + createTime +
+                ", createUserid=" + createUserid +
+                ", updateTime=" + updateTime +
+                ", updateUserid=" + updateUserid +
+                ", scheduleId=" + scheduleId +
+                ", equipmentId=" + equipmentId +
+                ", equipmentSeq='" + equipmentSeq + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", workingCount=" + workingCount +
+                ", qualifiedCount=" + qualifiedCount +
+                ", unqualifiedCout=" + unqualifiedCout +
+                ", completeFlag=" + completeFlag +
+                ", factoryId=" + factoryId +
+                ", bak='" + bak + '\'' +
+                '}';
+    }
+
+    public TsmcpDailyWork() {
+    }
+
+    public TsmcpDailyWork(Integer id, Integer flag, Date createTime,
+                          Integer createUserid, Date updateTime,
+                          Integer updateUserid, Integer scheduleId,
+                          Integer equipmentId, String equipmentSeq,
+                          Date startTime, Date endTime, Integer workingCount,
+                          Integer qualifiedCount, Integer unqualifiedCout,
+                          Integer completeFlag, Integer factoryId, String bak)
+    {
+        this.id = id;
+        this.flag = flag;
+        this.createTime = createTime;
+        this.createUserid = createUserid;
+        this.updateTime = updateTime;
+        this.updateUserid = updateUserid;
+        this.scheduleId = scheduleId;
+        this.equipmentId = equipmentId;
+        this.equipmentSeq = equipmentSeq;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.workingCount = workingCount;
+        this.qualifiedCount = qualifiedCount;
+        this.unqualifiedCout = unqualifiedCout;
+        this.completeFlag = completeFlag;
+        this.factoryId = factoryId;
+        this.bak = bak;
+    }
 }

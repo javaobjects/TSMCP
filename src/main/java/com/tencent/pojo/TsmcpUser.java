@@ -152,4 +152,51 @@ public class TsmcpUser {
     public void setFactoryId(Integer factoryId) {
         this.factoryId = factoryId;
     }
+
+    public TsmcpUser(Integer id) {
+    }
+    public TsmcpUser(Integer id, Integer flag,
+                     Date createTime, Integer createUserid,
+                     Date updateTime, Integer updateUserid,
+                     Integer userStatus, String userName,
+                     String userRealName, String userPasswd,
+                     String userJobNum, String userPhoneNum,
+                     String userEmail, Integer roleId, Integer factoryId) {
+        this.id = id;
+        this.flag = flag;
+        this.createTime = createTime;
+        this.createUserid = createUserid;
+        this.updateTime = updateTime;
+        this.updateUserid = updateUserid;
+        this.userStatus = userStatus;
+        this.userName = userName;
+        this.userRealName = userRealName;
+        this.userPasswd = userPasswd;
+        this.userJobNum = userJobNum;
+        this.userPhoneNum = userPhoneNum;
+        this.userEmail = userEmail;
+        this.roleId = roleId;
+        this.factoryId = factoryId;
+    }
+
+    @Override
+    public String toString() {
+        return "TsmcpUser{" +
+                "id=" + id +
+                ", flag=" + flag +
+                ", createTime=" + createTime +
+                ", createUserid=" + createUserid +
+                ", updateTime=" + updateTime +
+                ", updateUserid=" + updateUserid +
+                ", userStatus=" + userStatus +
+                ", userName='" + userName + '\'' +
+                ", userRealName='" + userRealName + '\'' +
+                ", userPasswd='" + userPasswd + '\'' +
+                ", userJobNum='" + userJobNum + '\'' +
+                ", userPhoneNum='" + userPhoneNum + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", roleId=" + roleId +
+                ", factoryId=" + factoryId +
+                '}';
+    }
 }
