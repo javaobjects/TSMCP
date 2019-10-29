@@ -237,7 +237,6 @@
   <select id="login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
     select * from tsmcp_user where user_name = #{user_name} and user_passwd = #{user_password}
   </select>
-
   <update id="updateByExampleSelective" parameterType="map">
     update tsmcp_user
     <set>
@@ -378,7 +377,5 @@
       factory_id = #{factoryId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-
 
 </mapper>

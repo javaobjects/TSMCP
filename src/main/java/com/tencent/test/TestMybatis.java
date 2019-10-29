@@ -15,7 +15,7 @@ public class TestMybatis {
 
 	public static void main(String[] args) throws IOException {
 		//1.获取SqlSessionFactory接口
-		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("com/tencent/sqlMapConfig.xml"));
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("sqlMapConfig.xml"));
 		
 		//2. 获取SqlSession接口
 		SqlSession session = factory.openSession();
