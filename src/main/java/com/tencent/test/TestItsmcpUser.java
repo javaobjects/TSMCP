@@ -31,6 +31,7 @@ public class TestItsmcpUser {
         TsmcpUserMapper tsmcpUserMapper = session.getMapper(TsmcpUserMapper.class);
 
         //3.调用查询
+        System.out.println("ts: " + tsmcpUserMapper);
         TsmcpUser tsmcpUser = tsmcpUserMapper.Login("scott","123456");
         System.out.println(tsmcpUser);
     }

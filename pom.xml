@@ -69,7 +69,30 @@
       <version>5.1.5.RELEASE</version>
     </dependency>
 
-      <dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-simple</artifactId>-->
+<!--      <version>1.7.25</version>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-api</artifactId>-->
+<!--      <version>1.7.25</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j.impl</groupId>-->
+<!--      <artifactId>log4j12</artifactId>-->
+<!--      <version>1.7.2</version>-->
+<!--    </dependency>-->
+
+
+
+
+
+    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.1.4.RELEASE</version>
