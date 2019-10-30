@@ -153,8 +153,7 @@ public class TsmcpUser {
         this.factoryId = factoryId;
     }
 
-    public TsmcpUser(Integer id) {
-    }
+    public TsmcpUser() { }
     public TsmcpUser(Integer id, Integer flag,
                      Date createTime, Integer createUserid,
                      Date updateTime, Integer updateUserid,

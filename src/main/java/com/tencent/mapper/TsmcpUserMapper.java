@@ -42,8 +42,9 @@ public interface TsmcpUserMapper {
      * @create:2019-10-29
      * @Description
      * 用户登录
-     *   <select id="login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
+     *   <select id="Login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
      */
 
-    public TsmcpUser Login(String user_name, String user_password);
+
+    public TsmcpUser Login(@Param("user_name") String user_name, @Param("user_password") String user_password);
 }

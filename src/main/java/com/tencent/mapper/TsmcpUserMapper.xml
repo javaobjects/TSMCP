@@ -234,8 +234,11 @@
      * @Description
      * 用户登录
   -->
-  <select id="login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
+<!--  <select id="Login"  resultType="com.tencent.pojo.TsmcpUser">-->
+  <select id="Login"  parameterType="String" resultMap="BaseResultMap">
     select * from tsmcp_user where user_name = #{user_name} and user_passwd = #{user_password}
+--     select * from tsmcp_user where user_name = #{0} and user_passwd = #{1}
+--     select * from tsmcp_user where user_name = #{userName} and user_passwd = #{userPassword}
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     update tsmcp_user
