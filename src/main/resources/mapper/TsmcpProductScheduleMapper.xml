@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapper.TsmcpUserMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpUser">
+<mapper namespace="com.tencent.tsmcp.mapper.TsmcpProductScheduleMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.tsmcp.pojo.TsmcpProductSchedule">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_userid" jdbcType="INTEGER" property="createUserid" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_userid" jdbcType="INTEGER" property="updateUserid" />
-    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_real_name" jdbcType="VARCHAR" property="userRealName" />
-    <result column="user_passwd" jdbcType="VARCHAR" property="userPasswd" />
-    <result column="user_job_num" jdbcType="VARCHAR" property="userJobNum" />
-    <result column="user_phone_num" jdbcType="CHAR" property="userPhoneNum" />
-    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
-    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="schedule_seq" jdbcType="VARCHAR" property="scheduleSeq" />
+    <result column="schedule_count" jdbcType="INTEGER" property="scheduleCount" />
+    <result column="schedule_status" jdbcType="INTEGER" property="scheduleStatus" />
+    <result column="plan_id" jdbcType="INTEGER" property="planId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="equipment_id" jdbcType="INTEGER" property="equipmentId" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
     <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -77,16 +77,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, flag, create_time, create_userid, update_time, update_userid, user_status, user_name, 
-    user_real_name, user_passwd, user_job_num, user_phone_num, user_email, role_id, factory_id
+    id, flag, create_time, create_userid, update_time, update_userid, schedule_seq, schedule_count, 
+    schedule_status, plan_id, product_id, equipment_id, start_date, end_date, factory_id
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductScheduleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tsmcp_user
+    from tsmcp_product_schedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -97,35 +97,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tsmcp_user
+    from tsmcp_product_schedule
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tsmcp_user
+    delete from tsmcp_product_schedule
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpUserExample">
-    delete from tsmcp_user
+  <delete id="deleteByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductScheduleExample">
+    delete from tsmcp_product_schedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojo.TsmcpUser">
-    insert into tsmcp_user (id, flag, create_time, 
+  <insert id="insert" parameterType="com.tencent.tsmcp.pojo.TsmcpProductSchedule">
+    insert into tsmcp_product_schedule (id, flag, create_time, 
       create_userid, update_time, update_userid, 
-      user_status, user_name, user_real_name, 
-      user_passwd, user_job_num, user_phone_num, 
-      user_email, role_id, factory_id
+      schedule_seq, schedule_count, schedule_status, 
+      plan_id, product_id, equipment_id, 
+      start_date, end_date, factory_id
       )
     values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{createUserid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=INTEGER}, 
-      #{userStatus,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userRealName,jdbcType=VARCHAR}, 
-      #{userPasswd,jdbcType=VARCHAR}, #{userJobNum,jdbcType=VARCHAR}, #{userPhoneNum,jdbcType=CHAR}, 
-      #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}
+      #{scheduleSeq,jdbcType=VARCHAR}, #{scheduleCount,jdbcType=INTEGER}, #{scheduleStatus,jdbcType=INTEGER}, 
+      #{planId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{factoryId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpUser">
-    insert into tsmcp_user
+  <insert id="insertSelective" parameterType="com.tencent.tsmcp.pojo.TsmcpProductSchedule">
+    insert into tsmcp_product_schedule
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -145,29 +145,29 @@
       <if test="updateUserid != null">
         update_userid,
       </if>
-      <if test="userStatus != null">
-        user_status,
+      <if test="scheduleSeq != null">
+        schedule_seq,
       </if>
-      <if test="userName != null">
-        user_name,
+      <if test="scheduleCount != null">
+        schedule_count,
       </if>
-      <if test="userRealName != null">
-        user_real_name,
+      <if test="scheduleStatus != null">
+        schedule_status,
       </if>
-      <if test="userPasswd != null">
-        user_passwd,
+      <if test="planId != null">
+        plan_id,
       </if>
-      <if test="userJobNum != null">
-        user_job_num,
+      <if test="productId != null">
+        product_id,
       </if>
-      <if test="userPhoneNum != null">
-        user_phone_num,
+      <if test="equipmentId != null">
+        equipment_id,
       </if>
-      <if test="userEmail != null">
-        user_email,
+      <if test="startDate != null">
+        start_date,
       </if>
-      <if test="roleId != null">
-        role_id,
+      <if test="endDate != null">
+        end_date,
       </if>
       <if test="factoryId != null">
         factory_id,
@@ -192,56 +192,43 @@
       <if test="updateUserid != null">
         #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="userStatus != null">
-        #{userStatus,jdbcType=INTEGER},
+      <if test="scheduleSeq != null">
+        #{scheduleSeq,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
+      <if test="scheduleCount != null">
+        #{scheduleCount,jdbcType=INTEGER},
       </if>
-      <if test="userRealName != null">
-        #{userRealName,jdbcType=VARCHAR},
+      <if test="scheduleStatus != null">
+        #{scheduleStatus,jdbcType=INTEGER},
       </if>
-      <if test="userPasswd != null">
-        #{userPasswd,jdbcType=VARCHAR},
+      <if test="planId != null">
+        #{planId,jdbcType=INTEGER},
       </if>
-      <if test="userJobNum != null">
-        #{userJobNum,jdbcType=VARCHAR},
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
       </if>
-      <if test="userPhoneNum != null">
-        #{userPhoneNum,jdbcType=CHAR},
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=INTEGER},
       </if>
-      <if test="userEmail != null">
-        #{userEmail,jdbcType=VARCHAR},
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=INTEGER},
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
       </if>
       <if test="factoryId != null">
         #{factoryId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpUserExample" resultType="java.lang.Long">
-    select count(*) from tsmcp_user
+  <select id="countByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductScheduleExample" resultType="java.lang.Long">
+    select count(*) from tsmcp_product_schedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-
-  <!--
-     * @author xianxian
-     * @create:2019-10-29
-     * @Description
-     * 用户登录
-  -->
-<!--  <select id="Login"  resultType="com.tencent.pojo.TsmcpUser">-->
-  <select id="Login"  parameterType="String" resultMap="BaseResultMap">
-    select * from tsmcp_user where user_name = #{user_name} and user_passwd = #{user_password}
---     select * from tsmcp_user where user_name = #{0} and user_passwd = #{1}
---     select * from tsmcp_user where user_name = #{userName} and user_passwd = #{userPassword}
-  </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update tsmcp_user
+    update tsmcp_product_schedule
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -261,29 +248,29 @@
       <if test="record.updateUserid != null">
         update_userid = #{record.updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="record.userStatus != null">
-        user_status = #{record.userStatus,jdbcType=INTEGER},
+      <if test="record.scheduleSeq != null">
+        schedule_seq = #{record.scheduleSeq,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null">
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.scheduleCount != null">
+        schedule_count = #{record.scheduleCount,jdbcType=INTEGER},
       </if>
-      <if test="record.userRealName != null">
-        user_real_name = #{record.userRealName,jdbcType=VARCHAR},
+      <if test="record.scheduleStatus != null">
+        schedule_status = #{record.scheduleStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.userPasswd != null">
-        user_passwd = #{record.userPasswd,jdbcType=VARCHAR},
+      <if test="record.planId != null">
+        plan_id = #{record.planId,jdbcType=INTEGER},
       </if>
-      <if test="record.userJobNum != null">
-        user_job_num = #{record.userJobNum,jdbcType=VARCHAR},
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
       </if>
-      <if test="record.userPhoneNum != null">
-        user_phone_num = #{record.userPhoneNum,jdbcType=CHAR},
+      <if test="record.equipmentId != null">
+        equipment_id = #{record.equipmentId,jdbcType=INTEGER},
       </if>
-      <if test="record.userEmail != null">
-        user_email = #{record.userEmail,jdbcType=VARCHAR},
+      <if test="record.startDate != null">
+        start_date = #{record.startDate,jdbcType=DATE},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=INTEGER},
+      <if test="record.endDate != null">
+        end_date = #{record.endDate,jdbcType=DATE},
       </if>
       <if test="record.factoryId != null">
         factory_id = #{record.factoryId,jdbcType=INTEGER},
@@ -294,28 +281,28 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update tsmcp_user
+    update tsmcp_product_schedule
     set id = #{record.id,jdbcType=INTEGER},
       flag = #{record.flag,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_userid = #{record.createUserid,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_userid = #{record.updateUserid,jdbcType=INTEGER},
-      user_status = #{record.userStatus,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_real_name = #{record.userRealName,jdbcType=VARCHAR},
-      user_passwd = #{record.userPasswd,jdbcType=VARCHAR},
-      user_job_num = #{record.userJobNum,jdbcType=VARCHAR},
-      user_phone_num = #{record.userPhoneNum,jdbcType=CHAR},
-      user_email = #{record.userEmail,jdbcType=VARCHAR},
-      role_id = #{record.roleId,jdbcType=INTEGER},
+      schedule_seq = #{record.scheduleSeq,jdbcType=VARCHAR},
+      schedule_count = #{record.scheduleCount,jdbcType=INTEGER},
+      schedule_status = #{record.scheduleStatus,jdbcType=INTEGER},
+      plan_id = #{record.planId,jdbcType=INTEGER},
+      product_id = #{record.productId,jdbcType=INTEGER},
+      equipment_id = #{record.equipmentId,jdbcType=INTEGER},
+      start_date = #{record.startDate,jdbcType=DATE},
+      end_date = #{record.endDate,jdbcType=DATE},
       factory_id = #{record.factoryId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpUser">
-    update tsmcp_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.tsmcp.pojo.TsmcpProductSchedule">
+    update tsmcp_product_schedule
     <set>
       <if test="flag != null">
         flag = #{flag,jdbcType=INTEGER},
@@ -332,29 +319,29 @@
       <if test="updateUserid != null">
         update_userid = #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="userStatus != null">
-        user_status = #{userStatus,jdbcType=INTEGER},
+      <if test="scheduleSeq != null">
+        schedule_seq = #{scheduleSeq,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="scheduleCount != null">
+        schedule_count = #{scheduleCount,jdbcType=INTEGER},
       </if>
-      <if test="userRealName != null">
-        user_real_name = #{userRealName,jdbcType=VARCHAR},
+      <if test="scheduleStatus != null">
+        schedule_status = #{scheduleStatus,jdbcType=INTEGER},
       </if>
-      <if test="userPasswd != null">
-        user_passwd = #{userPasswd,jdbcType=VARCHAR},
+      <if test="planId != null">
+        plan_id = #{planId,jdbcType=INTEGER},
       </if>
-      <if test="userJobNum != null">
-        user_job_num = #{userJobNum,jdbcType=VARCHAR},
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
       </if>
-      <if test="userPhoneNum != null">
-        user_phone_num = #{userPhoneNum,jdbcType=CHAR},
+      <if test="equipmentId != null">
+        equipment_id = #{equipmentId,jdbcType=INTEGER},
       </if>
-      <if test="userEmail != null">
-        user_email = #{userEmail,jdbcType=VARCHAR},
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
       </if>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=INTEGER},
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
       </if>
       <if test="factoryId != null">
         factory_id = #{factoryId,jdbcType=INTEGER},
@@ -362,23 +349,22 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpUser">
-    update tsmcp_user
+  <update id="updateByPrimaryKey" parameterType="com.tencent.tsmcp.pojo.TsmcpProductSchedule">
+    update tsmcp_product_schedule
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_userid = #{createUserid,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_userid = #{updateUserid,jdbcType=INTEGER},
-      user_status = #{userStatus,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR},
-      user_real_name = #{userRealName,jdbcType=VARCHAR},
-      user_passwd = #{userPasswd,jdbcType=VARCHAR},
-      user_job_num = #{userJobNum,jdbcType=VARCHAR},
-      user_phone_num = #{userPhoneNum,jdbcType=CHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=INTEGER},
+      schedule_seq = #{scheduleSeq,jdbcType=VARCHAR},
+      schedule_count = #{scheduleCount,jdbcType=INTEGER},
+      schedule_status = #{scheduleStatus,jdbcType=INTEGER},
+      plan_id = #{planId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      equipment_id = #{equipmentId,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
       factory_id = #{factoryId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
 </mapper>

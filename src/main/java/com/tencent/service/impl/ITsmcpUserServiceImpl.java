@@ -1,11 +1,13 @@
-package com.tencent.service.impl;
+package com.tencent.tsmcp.service.impl;
 
-import com.tencent.mapper.TsmcpUserMapper;
-import com.tencent.pojo.TsmcpUser;
-import com.tencent.service.ITsmcpUserService;
+
+import com.tencent.tsmcp.mapper.TsmcpUserMapper;
+import com.tencent.tsmcp.service.ITsmcpUserService;
+import com.tencent.tsmcp.pojo.TsmcpUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 
 /**
  * @ClassName ITsmcpUserServiceImpl.java
@@ -14,10 +16,12 @@ import javax.annotation.Resource;
  * @Description TODO
  * @createTime 2019年10月29日 18:45:00
  */
+
 @Service("ITsmcpUserService")
+@Transactional  //开启注解事务
 public class ITsmcpUserServiceImpl implements ITsmcpUserService {
 
-    @Resource(name = "tsmcpUserMapper")//默认根据名称匹配
+    @Autowired
     private TsmcpUserMapper tsmcpUserMapper;
 
     @Override

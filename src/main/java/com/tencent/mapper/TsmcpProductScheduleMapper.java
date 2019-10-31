@@ -1,10 +1,13 @@
-package com.tencent.mapper;
+package com.tencent.tsmcp.mapper;
 
-import com.tencent.pojo.TsmcpProductSchedule;
-import com.tencent.pojo.TsmcpProductScheduleExample;
+import com.tencent.tsmcp.pojo.TsmcpProductSchedule;
+import com.tencent.tsmcp.pojo.TsmcpProductScheduleExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TsmcpProductScheduleMapper {
     long countByExample(TsmcpProductScheduleExample example);
 

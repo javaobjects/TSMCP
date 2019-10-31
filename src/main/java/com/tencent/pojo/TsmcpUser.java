@@ -1,4 +1,4 @@
-package com.tencent.pojo;
+package com.tencent.tsmcp.pojo;
 
 import java.util.Date;
 
@@ -153,7 +153,8 @@ public class TsmcpUser {
         this.factoryId = factoryId;
     }
 
-    public TsmcpUser() { }
+    public TsmcpUser() {
+    }
     public TsmcpUser(Integer id, Integer flag,
                      Date createTime, Integer createUserid,
                      Date updateTime, Integer updateUserid,

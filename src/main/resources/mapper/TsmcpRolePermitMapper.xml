@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapper.TsmcpEquipmentMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpEquipment">
+<mapper namespace="com.tencent.tsmcp.mapper.TsmcpRolePermitMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.tsmcp.pojo.TsmcpRolePermit">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_userid" jdbcType="INTEGER" property="createUserid" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_userid" jdbcType="INTEGER" property="updateUserid" />
-    <result column="equipment_seq" jdbcType="VARCHAR" property="equipmentSeq" />
-    <result column="equipment_name" jdbcType="VARCHAR" property="equipmentName" />
-    <result column="equipment_img_url" jdbcType="VARCHAR" property="equipmentImgUrl" />
-    <result column="equipment_status" jdbcType="INTEGER" property="equipmentStatus" />
     <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="permit_id" jdbcType="INTEGER" property="permitId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,16 +71,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, flag, create_time, create_userid, update_time, update_userid, equipment_seq, 
-    equipment_name, equipment_img_url, equipment_status, factory_id
+    id, flag, create_time, create_userid, update_time, update_userid, factory_id, role_id, 
+    permit_id
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpEquipmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermitExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tsmcp_equipment
+    from tsmcp_role_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,31 +91,31 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tsmcp_equipment
+    from tsmcp_role_permit
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tsmcp_equipment
+    delete from tsmcp_role_permit
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpEquipmentExample">
-    delete from tsmcp_equipment
+  <delete id="deleteByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermitExample">
+    delete from tsmcp_role_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojo.TsmcpEquipment">
-    insert into tsmcp_equipment (id, flag, create_time, 
+  <insert id="insert" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermit">
+    insert into tsmcp_role_permit (id, flag, create_time, 
       create_userid, update_time, update_userid, 
-      equipment_seq, equipment_name, equipment_img_url, 
-      equipment_status, factory_id)
+      factory_id, role_id, permit_id
+      )
     values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{createUserid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=INTEGER}, 
-      #{equipmentSeq,jdbcType=VARCHAR}, #{equipmentName,jdbcType=VARCHAR}, #{equipmentImgUrl,jdbcType=VARCHAR}, 
-      #{equipmentStatus,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER})
+      #{factoryId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{permitId,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpEquipment">
-    insert into tsmcp_equipment
+  <insert id="insertSelective" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermit">
+    insert into tsmcp_role_permit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -137,20 +135,14 @@
       <if test="updateUserid != null">
         update_userid,
       </if>
-      <if test="equipmentSeq != null">
-        equipment_seq,
-      </if>
-      <if test="equipmentName != null">
-        equipment_name,
-      </if>
-      <if test="equipmentImgUrl != null">
-        equipment_img_url,
-      </if>
-      <if test="equipmentStatus != null">
-        equipment_status,
-      </if>
       <if test="factoryId != null">
         factory_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="permitId != null">
+        permit_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -172,31 +164,25 @@
       <if test="updateUserid != null">
         #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="equipmentSeq != null">
-        #{equipmentSeq,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentName != null">
-        #{equipmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentImgUrl != null">
-        #{equipmentImgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentStatus != null">
-        #{equipmentStatus,jdbcType=INTEGER},
-      </if>
       <if test="factoryId != null">
         #{factoryId,jdbcType=INTEGER},
       </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permitId != null">
+        #{permitId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpEquipmentExample" resultType="java.lang.Long">
-    select count(*) from tsmcp_equipment
+  <select id="countByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermitExample" resultType="java.lang.Long">
+    select count(*) from tsmcp_role_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update tsmcp_equipment
+    update tsmcp_role_permit
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -216,20 +202,14 @@
       <if test="record.updateUserid != null">
         update_userid = #{record.updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="record.equipmentSeq != null">
-        equipment_seq = #{record.equipmentSeq,jdbcType=VARCHAR},
-      </if>
-      <if test="record.equipmentName != null">
-        equipment_name = #{record.equipmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.equipmentImgUrl != null">
-        equipment_img_url = #{record.equipmentImgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="record.equipmentStatus != null">
-        equipment_status = #{record.equipmentStatus,jdbcType=INTEGER},
-      </if>
       <if test="record.factoryId != null">
         factory_id = #{record.factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.permitId != null">
+        permit_id = #{record.permitId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -237,24 +217,22 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update tsmcp_equipment
+    update tsmcp_role_permit
     set id = #{record.id,jdbcType=INTEGER},
       flag = #{record.flag,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_userid = #{record.createUserid,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_userid = #{record.updateUserid,jdbcType=INTEGER},
-      equipment_seq = #{record.equipmentSeq,jdbcType=VARCHAR},
-      equipment_name = #{record.equipmentName,jdbcType=VARCHAR},
-      equipment_img_url = #{record.equipmentImgUrl,jdbcType=VARCHAR},
-      equipment_status = #{record.equipmentStatus,jdbcType=INTEGER},
-      factory_id = #{record.factoryId,jdbcType=INTEGER}
+      factory_id = #{record.factoryId,jdbcType=INTEGER},
+      role_id = #{record.roleId,jdbcType=INTEGER},
+      permit_id = #{record.permitId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpEquipment">
-    update tsmcp_equipment
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermit">
+    update tsmcp_role_permit
     <set>
       <if test="flag != null">
         flag = #{flag,jdbcType=INTEGER},
@@ -271,36 +249,28 @@
       <if test="updateUserid != null">
         update_userid = #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="equipmentSeq != null">
-        equipment_seq = #{equipmentSeq,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentName != null">
-        equipment_name = #{equipmentName,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentImgUrl != null">
-        equipment_img_url = #{equipmentImgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="equipmentStatus != null">
-        equipment_status = #{equipmentStatus,jdbcType=INTEGER},
-      </if>
       <if test="factoryId != null">
         factory_id = #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permitId != null">
+        permit_id = #{permitId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpEquipment">
-    update tsmcp_equipment
+  <update id="updateByPrimaryKey" parameterType="com.tencent.tsmcp.pojo.TsmcpRolePermit">
+    update tsmcp_role_permit
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_userid = #{createUserid,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_userid = #{updateUserid,jdbcType=INTEGER},
-      equipment_seq = #{equipmentSeq,jdbcType=VARCHAR},
-      equipment_name = #{equipmentName,jdbcType=VARCHAR},
-      equipment_img_url = #{equipmentImgUrl,jdbcType=VARCHAR},
-      equipment_status = #{equipmentStatus,jdbcType=INTEGER},
-      factory_id = #{factoryId,jdbcType=INTEGER}
+      factory_id = #{factoryId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      permit_id = #{permitId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

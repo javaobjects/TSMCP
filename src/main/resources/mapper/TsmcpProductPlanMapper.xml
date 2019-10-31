@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapper.TsmcpDailyWorkMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpDailyWork">
+<mapper namespace="com.tencent.tsmcp.mapper.TsmcpProductPlanMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.tsmcp.pojo.TsmcpProductPlan">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_userid" jdbcType="INTEGER" property="createUserid" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_userid" jdbcType="INTEGER" property="updateUserid" />
-    <result column="schedule_id" jdbcType="INTEGER" property="scheduleId" />
-    <result column="equipment_id" jdbcType="INTEGER" property="equipmentId" />
-    <result column="equipment_seq" jdbcType="VARCHAR" property="equipmentSeq" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="working_count" jdbcType="INTEGER" property="workingCount" />
-    <result column="qualified_count" jdbcType="INTEGER" property="qualifiedCount" />
-    <result column="unqualified_cout" jdbcType="INTEGER" property="unqualifiedCout" />
-    <result column="complete_flag" jdbcType="INTEGER" property="completeFlag" />
+    <result column="plan_seq" jdbcType="VARCHAR" property="planSeq" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="plan_count" jdbcType="INTEGER" property="planCount" />
+    <result column="delivery_date" jdbcType="DATE" property="deliveryDate" />
+    <result column="plan_start_date" jdbcType="DATE" property="planStartDate" />
+    <result column="plan_end_date" jdbcType="DATE" property="planEndDate" />
+    <result column="plan_status" jdbcType="INTEGER" property="planStatus" />
     <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
-    <result column="bak" jdbcType="VARCHAR" property="bak" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -79,17 +77,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, flag, create_time, create_userid, update_time, update_userid, schedule_id, equipment_id, 
-    equipment_seq, start_time, end_time, working_count, qualified_count, unqualified_cout, 
-    complete_flag, factory_id, bak
+    id, flag, create_time, create_userid, update_time, update_userid, plan_seq, order_id, 
+    product_id, plan_count, delivery_date, plan_start_date, plan_end_date, plan_status, 
+    factory_id
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlanExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tsmcp_daily_work
+    from tsmcp_product_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,35 +98,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tsmcp_daily_work
+    from tsmcp_product_plan
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tsmcp_daily_work
+    delete from tsmcp_product_plan
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample">
-    delete from tsmcp_daily_work
+  <delete id="deleteByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlanExample">
+    delete from tsmcp_product_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojo.TsmcpDailyWork">
-    insert into tsmcp_daily_work (id, flag, create_time, 
+  <insert id="insert" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlan">
+    insert into tsmcp_product_plan (id, flag, create_time, 
       create_userid, update_time, update_userid, 
-      schedule_id, equipment_id, equipment_seq, 
-      start_time, end_time, working_count, 
-      qualified_count, unqualified_cout, complete_flag, 
-      factory_id, bak)
+      plan_seq, order_id, product_id, 
+      plan_count, delivery_date, plan_start_date, 
+      plan_end_date, plan_status, factory_id
+      )
     values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{createUserid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=INTEGER}, 
-      #{scheduleId,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, #{equipmentSeq,jdbcType=VARCHAR}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{workingCount,jdbcType=INTEGER}, 
-      #{qualifiedCount,jdbcType=INTEGER}, #{unqualifiedCout,jdbcType=INTEGER}, #{completeFlag,jdbcType=INTEGER}, 
-      #{factoryId,jdbcType=INTEGER}, #{bak,jdbcType=VARCHAR})
+      #{planSeq,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{planCount,jdbcType=INTEGER}, #{deliveryDate,jdbcType=DATE}, #{planStartDate,jdbcType=DATE}, 
+      #{planEndDate,jdbcType=DATE}, #{planStatus,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpDailyWork">
-    insert into tsmcp_daily_work
+  <insert id="insertSelective" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlan">
+    insert into tsmcp_product_plan
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -148,38 +146,32 @@
       <if test="updateUserid != null">
         update_userid,
       </if>
-      <if test="scheduleId != null">
-        schedule_id,
+      <if test="planSeq != null">
+        plan_seq,
       </if>
-      <if test="equipmentId != null">
-        equipment_id,
+      <if test="orderId != null">
+        order_id,
       </if>
-      <if test="equipmentSeq != null">
-        equipment_seq,
+      <if test="productId != null">
+        product_id,
       </if>
-      <if test="startTime != null">
-        start_time,
+      <if test="planCount != null">
+        plan_count,
       </if>
-      <if test="endTime != null">
-        end_time,
+      <if test="deliveryDate != null">
+        delivery_date,
       </if>
-      <if test="workingCount != null">
-        working_count,
+      <if test="planStartDate != null">
+        plan_start_date,
       </if>
-      <if test="qualifiedCount != null">
-        qualified_count,
+      <if test="planEndDate != null">
+        plan_end_date,
       </if>
-      <if test="unqualifiedCout != null">
-        unqualified_cout,
-      </if>
-      <if test="completeFlag != null">
-        complete_flag,
+      <if test="planStatus != null">
+        plan_status,
       </if>
       <if test="factoryId != null">
         factory_id,
-      </if>
-      <if test="bak != null">
-        bak,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -201,49 +193,43 @@
       <if test="updateUserid != null">
         #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="scheduleId != null">
-        #{scheduleId,jdbcType=INTEGER},
+      <if test="planSeq != null">
+        #{planSeq,jdbcType=VARCHAR},
       </if>
-      <if test="equipmentId != null">
-        #{equipmentId,jdbcType=INTEGER},
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="equipmentSeq != null">
-        #{equipmentSeq,jdbcType=VARCHAR},
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
+      <if test="planCount != null">
+        #{planCount,jdbcType=INTEGER},
       </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
+      <if test="deliveryDate != null">
+        #{deliveryDate,jdbcType=DATE},
       </if>
-      <if test="workingCount != null">
-        #{workingCount,jdbcType=INTEGER},
+      <if test="planStartDate != null">
+        #{planStartDate,jdbcType=DATE},
       </if>
-      <if test="qualifiedCount != null">
-        #{qualifiedCount,jdbcType=INTEGER},
+      <if test="planEndDate != null">
+        #{planEndDate,jdbcType=DATE},
       </if>
-      <if test="unqualifiedCout != null">
-        #{unqualifiedCout,jdbcType=INTEGER},
-      </if>
-      <if test="completeFlag != null">
-        #{completeFlag,jdbcType=INTEGER},
+      <if test="planStatus != null">
+        #{planStatus,jdbcType=INTEGER},
       </if>
       <if test="factoryId != null">
         #{factoryId,jdbcType=INTEGER},
       </if>
-      <if test="bak != null">
-        #{bak,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample" resultType="java.lang.Long">
-    select count(*) from tsmcp_daily_work
+  <select id="countByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlanExample" resultType="java.lang.Long">
+    select count(*) from tsmcp_product_plan
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update tsmcp_daily_work
+    update tsmcp_product_plan
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -263,38 +249,32 @@
       <if test="record.updateUserid != null">
         update_userid = #{record.updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="record.scheduleId != null">
-        schedule_id = #{record.scheduleId,jdbcType=INTEGER},
+      <if test="record.planSeq != null">
+        plan_seq = #{record.planSeq,jdbcType=VARCHAR},
       </if>
-      <if test="record.equipmentId != null">
-        equipment_id = #{record.equipmentId,jdbcType=INTEGER},
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
       </if>
-      <if test="record.equipmentSeq != null">
-        equipment_seq = #{record.equipmentSeq,jdbcType=VARCHAR},
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
       </if>
-      <if test="record.startTime != null">
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      <if test="record.planCount != null">
+        plan_count = #{record.planCount,jdbcType=INTEGER},
       </if>
-      <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      <if test="record.deliveryDate != null">
+        delivery_date = #{record.deliveryDate,jdbcType=DATE},
       </if>
-      <if test="record.workingCount != null">
-        working_count = #{record.workingCount,jdbcType=INTEGER},
+      <if test="record.planStartDate != null">
+        plan_start_date = #{record.planStartDate,jdbcType=DATE},
       </if>
-      <if test="record.qualifiedCount != null">
-        qualified_count = #{record.qualifiedCount,jdbcType=INTEGER},
+      <if test="record.planEndDate != null">
+        plan_end_date = #{record.planEndDate,jdbcType=DATE},
       </if>
-      <if test="record.unqualifiedCout != null">
-        unqualified_cout = #{record.unqualifiedCout,jdbcType=INTEGER},
-      </if>
-      <if test="record.completeFlag != null">
-        complete_flag = #{record.completeFlag,jdbcType=INTEGER},
+      <if test="record.planStatus != null">
+        plan_status = #{record.planStatus,jdbcType=INTEGER},
       </if>
       <if test="record.factoryId != null">
         factory_id = #{record.factoryId,jdbcType=INTEGER},
-      </if>
-      <if test="record.bak != null">
-        bak = #{record.bak,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -302,30 +282,28 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update tsmcp_daily_work
+    update tsmcp_product_plan
     set id = #{record.id,jdbcType=INTEGER},
       flag = #{record.flag,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_userid = #{record.createUserid,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_userid = #{record.updateUserid,jdbcType=INTEGER},
-      schedule_id = #{record.scheduleId,jdbcType=INTEGER},
-      equipment_id = #{record.equipmentId,jdbcType=INTEGER},
-      equipment_seq = #{record.equipmentSeq,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      working_count = #{record.workingCount,jdbcType=INTEGER},
-      qualified_count = #{record.qualifiedCount,jdbcType=INTEGER},
-      unqualified_cout = #{record.unqualifiedCout,jdbcType=INTEGER},
-      complete_flag = #{record.completeFlag,jdbcType=INTEGER},
-      factory_id = #{record.factoryId,jdbcType=INTEGER},
-      bak = #{record.bak,jdbcType=VARCHAR}
+      plan_seq = #{record.planSeq,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      product_id = #{record.productId,jdbcType=INTEGER},
+      plan_count = #{record.planCount,jdbcType=INTEGER},
+      delivery_date = #{record.deliveryDate,jdbcType=DATE},
+      plan_start_date = #{record.planStartDate,jdbcType=DATE},
+      plan_end_date = #{record.planEndDate,jdbcType=DATE},
+      plan_status = #{record.planStatus,jdbcType=INTEGER},
+      factory_id = #{record.factoryId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpDailyWork">
-    update tsmcp_daily_work
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlan">
+    update tsmcp_product_plan
     <set>
       <if test="flag != null">
         flag = #{flag,jdbcType=INTEGER},
@@ -342,60 +320,52 @@
       <if test="updateUserid != null">
         update_userid = #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="scheduleId != null">
-        schedule_id = #{scheduleId,jdbcType=INTEGER},
+      <if test="planSeq != null">
+        plan_seq = #{planSeq,jdbcType=VARCHAR},
       </if>
-      <if test="equipmentId != null">
-        equipment_id = #{equipmentId,jdbcType=INTEGER},
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
       </if>
-      <if test="equipmentSeq != null">
-        equipment_seq = #{equipmentSeq,jdbcType=VARCHAR},
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
+      <if test="planCount != null">
+        plan_count = #{planCount,jdbcType=INTEGER},
       </if>
-      <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
+      <if test="deliveryDate != null">
+        delivery_date = #{deliveryDate,jdbcType=DATE},
       </if>
-      <if test="workingCount != null">
-        working_count = #{workingCount,jdbcType=INTEGER},
+      <if test="planStartDate != null">
+        plan_start_date = #{planStartDate,jdbcType=DATE},
       </if>
-      <if test="qualifiedCount != null">
-        qualified_count = #{qualifiedCount,jdbcType=INTEGER},
+      <if test="planEndDate != null">
+        plan_end_date = #{planEndDate,jdbcType=DATE},
       </if>
-      <if test="unqualifiedCout != null">
-        unqualified_cout = #{unqualifiedCout,jdbcType=INTEGER},
-      </if>
-      <if test="completeFlag != null">
-        complete_flag = #{completeFlag,jdbcType=INTEGER},
+      <if test="planStatus != null">
+        plan_status = #{planStatus,jdbcType=INTEGER},
       </if>
       <if test="factoryId != null">
         factory_id = #{factoryId,jdbcType=INTEGER},
       </if>
-      <if test="bak != null">
-        bak = #{bak,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpDailyWork">
-    update tsmcp_daily_work
+  <update id="updateByPrimaryKey" parameterType="com.tencent.tsmcp.pojo.TsmcpProductPlan">
+    update tsmcp_product_plan
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_userid = #{createUserid,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_userid = #{updateUserid,jdbcType=INTEGER},
-      schedule_id = #{scheduleId,jdbcType=INTEGER},
-      equipment_id = #{equipmentId,jdbcType=INTEGER},
-      equipment_seq = #{equipmentSeq,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      working_count = #{workingCount,jdbcType=INTEGER},
-      qualified_count = #{qualifiedCount,jdbcType=INTEGER},
-      unqualified_cout = #{unqualifiedCout,jdbcType=INTEGER},
-      complete_flag = #{completeFlag,jdbcType=INTEGER},
-      factory_id = #{factoryId,jdbcType=INTEGER},
-      bak = #{bak,jdbcType=VARCHAR}
+      plan_seq = #{planSeq,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
+      plan_count = #{planCount,jdbcType=INTEGER},
+      delivery_date = #{deliveryDate,jdbcType=DATE},
+      plan_start_date = #{planStartDate,jdbcType=DATE},
+      plan_end_date = #{planEndDate,jdbcType=DATE},
+      plan_status = #{planStatus,jdbcType=INTEGER},
+      factory_id = #{factoryId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

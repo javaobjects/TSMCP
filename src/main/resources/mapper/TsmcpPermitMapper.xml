@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapper.TsmcpEquipmentProductMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpEquipmentProduct">
+<mapper namespace="com.tencent.tsmcp.mapper.TsmcpPermitMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.tsmcp.pojo.TsmcpPermit">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="equipment_id" jdbcType="INTEGER" property="equipmentId" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="yield" jdbcType="INTEGER" property="yield" />
-    <result column="unit" jdbcType="INTEGER" property="unit" />
-    <result column="factory_id" jdbcType="INTEGER" property="factoryId" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="permit_name" jdbcType="VARCHAR" property="permitName" />
+    <result column="permit_desc" jdbcType="VARCHAR" property="permitDesc" />
+    <result column="permit_path" jdbcType="VARCHAR" property="permitPath" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, equipment_id, product_id, yield, unit, factory_id
+    id, flag, status, parent_id, permit_name, permit_desc, permit_path
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpEquipmentProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpPermitExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tsmcp_equipment_product
+    from tsmcp_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,96 +88,105 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from tsmcp_equipment_product
+    from tsmcp_permit
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tsmcp_equipment_product
+    delete from tsmcp_permit
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpEquipmentProductExample">
-    delete from tsmcp_equipment_product
+  <delete id="deleteByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpPermitExample">
+    delete from tsmcp_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojo.TsmcpEquipmentProduct">
-    insert into tsmcp_equipment_product (id, equipment_id, product_id, 
-      yield, unit, factory_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{equipmentId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{yield,jdbcType=INTEGER}, #{unit,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.tencent.tsmcp.pojo.TsmcpPermit">
+    insert into tsmcp_permit (id, flag, status, 
+      parent_id, permit_name, permit_desc, 
+      permit_path)
+    values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=INTEGER}, #{permitName,jdbcType=VARCHAR}, #{permitDesc,jdbcType=VARCHAR}, 
+      #{permitPath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpEquipmentProduct">
-    insert into tsmcp_equipment_product
+  <insert id="insertSelective" parameterType="com.tencent.tsmcp.pojo.TsmcpPermit">
+    insert into tsmcp_permit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="equipmentId != null">
-        equipment_id,
+      <if test="flag != null">
+        flag,
       </if>
-      <if test="productId != null">
-        product_id,
+      <if test="status != null">
+        status,
       </if>
-      <if test="yield != null">
-        yield,
+      <if test="parentId != null">
+        parent_id,
       </if>
-      <if test="unit != null">
-        unit,
+      <if test="permitName != null">
+        permit_name,
       </if>
-      <if test="factoryId != null">
-        factory_id,
+      <if test="permitDesc != null">
+        permit_desc,
+      </if>
+      <if test="permitPath != null">
+        permit_path,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="equipmentId != null">
-        #{equipmentId,jdbcType=INTEGER},
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
-      <if test="yield != null">
-        #{yield,jdbcType=INTEGER},
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="unit != null">
-        #{unit,jdbcType=INTEGER},
+      <if test="permitName != null">
+        #{permitName,jdbcType=VARCHAR},
       </if>
-      <if test="factoryId != null">
-        #{factoryId,jdbcType=INTEGER},
+      <if test="permitDesc != null">
+        #{permitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPath != null">
+        #{permitPath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpEquipmentProductExample" resultType="java.lang.Long">
-    select count(*) from tsmcp_equipment_product
+  <select id="countByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpPermitExample" resultType="java.lang.Long">
+    select count(*) from tsmcp_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update tsmcp_equipment_product
+    update tsmcp_permit
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.equipmentId != null">
-        equipment_id = #{record.equipmentId,jdbcType=INTEGER},
+      <if test="record.flag != null">
+        flag = #{record.flag,jdbcType=INTEGER},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=INTEGER},
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.yield != null">
-        yield = #{record.yield,jdbcType=INTEGER},
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=INTEGER},
       </if>
-      <if test="record.unit != null">
-        unit = #{record.unit,jdbcType=INTEGER},
+      <if test="record.permitName != null">
+        permit_name = #{record.permitName,jdbcType=VARCHAR},
       </if>
-      <if test="record.factoryId != null">
-        factory_id = #{record.factoryId,jdbcType=INTEGER},
+      <if test="record.permitDesc != null">
+        permit_desc = #{record.permitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.permitPath != null">
+        permit_path = #{record.permitPath,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,45 +194,50 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update tsmcp_equipment_product
+    update tsmcp_permit
     set id = #{record.id,jdbcType=INTEGER},
-      equipment_id = #{record.equipmentId,jdbcType=INTEGER},
-      product_id = #{record.productId,jdbcType=INTEGER},
-      yield = #{record.yield,jdbcType=INTEGER},
-      unit = #{record.unit,jdbcType=INTEGER},
-      factory_id = #{record.factoryId,jdbcType=INTEGER}
+      flag = #{record.flag,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=INTEGER},
+      permit_name = #{record.permitName,jdbcType=VARCHAR},
+      permit_desc = #{record.permitDesc,jdbcType=VARCHAR},
+      permit_path = #{record.permitPath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpEquipmentProduct">
-    update tsmcp_equipment_product
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.tsmcp.pojo.TsmcpPermit">
+    update tsmcp_permit
     <set>
-      <if test="equipmentId != null">
-        equipment_id = #{equipmentId,jdbcType=INTEGER},
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="yield != null">
-        yield = #{yield,jdbcType=INTEGER},
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="unit != null">
-        unit = #{unit,jdbcType=INTEGER},
+      <if test="permitName != null">
+        permit_name = #{permitName,jdbcType=VARCHAR},
       </if>
-      <if test="factoryId != null">
-        factory_id = #{factoryId,jdbcType=INTEGER},
+      <if test="permitDesc != null">
+        permit_desc = #{permitDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="permitPath != null">
+        permit_path = #{permitPath,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpEquipmentProduct">
-    update tsmcp_equipment_product
-    set equipment_id = #{equipmentId,jdbcType=INTEGER},
-      product_id = #{productId,jdbcType=INTEGER},
-      yield = #{yield,jdbcType=INTEGER},
-      unit = #{unit,jdbcType=INTEGER},
-      factory_id = #{factoryId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.tencent.tsmcp.pojo.TsmcpPermit">
+    update tsmcp_permit
+    set flag = #{flag,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      permit_name = #{permitName,jdbcType=VARCHAR},
+      permit_desc = #{permitDesc,jdbcType=VARCHAR},
+      permit_path = #{permitPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

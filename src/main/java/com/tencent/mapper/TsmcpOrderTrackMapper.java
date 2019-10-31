@@ -1,10 +1,13 @@
-package com.tencent.mapper;
+package com.tencent.tsmcp.mapper;
 
-import com.tencent.pojo.TsmcpOrderTrack;
-import com.tencent.pojo.TsmcpOrderTrackExample;
+import com.tencent.tsmcp.pojo.TsmcpOrderTrack;
+import com.tencent.tsmcp.pojo.TsmcpOrderTrackExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TsmcpOrderTrackMapper {
     long countByExample(TsmcpOrderTrackExample example);
 

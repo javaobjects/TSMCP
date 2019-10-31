@@ -1,10 +1,13 @@
-package com.tencent.mapper;
+package com.tencent.tsmcp.mapper;
 
-import com.tencent.pojo.TsmcpDailyWork;
-import com.tencent.pojo.TsmcpDailyWorkExample;
+import com.tencent.tsmcp.pojo.TsmcpDailyWork;
+import com.tencent.tsmcp.pojo.TsmcpDailyWorkExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TsmcpDailyWorkMapper {
     long countByExample(TsmcpDailyWorkExample example);
 

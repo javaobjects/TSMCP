@@ -1,10 +1,13 @@
-package com.tencent.mapper;
+package com.tencent.tsmcp.mapper;
 
-import com.tencent.pojo.TsmcpUser;
-import com.tencent.pojo.TsmcpUserExample;
+
+import com.tencent.tsmcp.pojo.TsmcpUserExample;
 import java.util.List;
+import com.tencent.tsmcp.pojo.TsmcpUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TsmcpUserMapper {
     long countByExample(TsmcpUserExample example);
 
@@ -29,11 +32,6 @@ public interface TsmcpUserMapper {
     int updateByPrimaryKey(TsmcpUser record);
 
 
-
-
-
-
-
     /**
      * @param user_name
      * @param user_password
@@ -42,9 +40,8 @@ public interface TsmcpUserMapper {
      * @create:2019-10-29
      * @Description
      * 用户登录
-     *   <select id="Login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
+     *   <select id="login" parameterType="String" resultType="com.tencent.pojo.TsmcpUser">
      */
-
 
     public TsmcpUser Login(@Param("user_name") String user_name, @Param("user_password") String user_password);
 }

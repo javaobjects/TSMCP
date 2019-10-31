@@ -1,10 +1,13 @@
-package com.tencent.mapper;
+package com.tencent.tsmcp.mapper;
 
-import com.tencent.pojo.TsmcpRolePermit;
-import com.tencent.pojo.TsmcpRolePermitExample;
+import com.tencent.tsmcp.pojo.TsmcpRolePermit;
+import com.tencent.tsmcp.pojo.TsmcpRolePermitExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TsmcpRolePermitMapper {
     long countByExample(TsmcpRolePermitExample example);
 

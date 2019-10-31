@@ -1,4 +1,4 @@
-package com.tencent.pojo;
+package com.tencent.tsmcp.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;

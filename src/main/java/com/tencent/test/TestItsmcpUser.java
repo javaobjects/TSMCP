@@ -1,13 +1,13 @@
-package com.tencent.test;
+package com.tencent.tsmcp.test;
 
-import com.tencent.dao.EmpMapper;
-import com.tencent.mapper.TsmcpUserMapper;
-import com.tencent.pojo.Emp;
-import com.tencent.pojo.TsmcpUser;
+import com.tencent.tsmcp.mapper.TsmcpUserMapper;
+import com.tencent.tsmcp.pojo.TsmcpUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
@@ -18,8 +18,12 @@ import java.io.IOException;
  * @Description TODO
  * @createTime 2019年10月29日 19:07:00
  */
-
+@Component
 public class TestItsmcpUser {
+
+    @Autowired
+    private SqlSessionFactory factory;
+
     public static void main(String[] args) throws IOException {
         //1.获取SqlSessionFactory接口
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("sqlMapConfig.xml"));
@@ -31,8 +35,7 @@ public class TestItsmcpUser {
         TsmcpUserMapper tsmcpUserMapper = session.getMapper(TsmcpUserMapper.class);
 
         //3.调用查询
-        System.out.println("ts: " + tsmcpUserMapper);
-        TsmcpUser tsmcpUser = tsmcpUserMapper.Login("scott","123456");
+        TsmcpUser tsmcpUser = tsmcpUserMapper.Login("SCOTT","123456");
         System.out.println(tsmcpUser);
     }
 }
