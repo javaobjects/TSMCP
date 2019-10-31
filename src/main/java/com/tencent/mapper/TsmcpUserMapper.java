@@ -1,11 +1,11 @@
-package com.tencent.tsmcp.mapper;
+package com.tencent.mapper;
 
-
-import com.tencent.tsmcp.pojo.TsmcpUserExample;
-import java.util.List;
-import com.tencent.tsmcp.pojo.TsmcpUser;
+import com.tencent.pojo.TsmcpUser;
+import com.tencent.pojo.TsmcpUserExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface TsmcpUserMapper {
@@ -44,4 +44,6 @@ public interface TsmcpUserMapper {
      */
 
     public TsmcpUser Login(@Param("user_name") String user_name, @Param("user_password") String user_password);
+
+    public List<TsmcpUser> selectAll();
 }

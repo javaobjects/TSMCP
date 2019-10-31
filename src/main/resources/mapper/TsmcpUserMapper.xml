@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.tsmcp.mapper.TsmcpUserMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.tsmcp.pojo.TsmcpUser">
+<mapper namespace="com.tencent.mapper.TsmcpUserMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.pojoUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -80,7 +80,7 @@
     id, flag, create_time, create_userid, update_time, update_userid, user_status, user_name, 
     user_real_name, user_passwd, user_job_num, user_phone_num, user_email, role_id, factory_id
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.pojoUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -104,13 +104,13 @@
     delete from tsmcp_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpUserExample">
+  <delete id="deleteByExample" parameterType="com.tencent.pojoUserExample">
     delete from tsmcp_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.tsmcp.pojo.TsmcpUser">
+  <insert id="insert" parameterType="com.tencent.pojoUser">
     insert into tsmcp_user (id, flag, create_time, 
       create_userid, update_time, update_userid, 
       user_status, user_name, user_real_name, 
@@ -124,7 +124,7 @@
       #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.tsmcp.pojo.TsmcpUser">
+  <insert id="insertSelective" parameterType="com.tencent.pojoUser">
     insert into tsmcp_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.tsmcp.pojo.TsmcpUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tencent.pojoUserExample" resultType="java.lang.Long">
     select count(*) from tsmcp_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -310,7 +310,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.tsmcp.pojo.TsmcpUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojoUser">
     update tsmcp_user
     <set>
       <if test="flag != null">
@@ -358,7 +358,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.tsmcp.pojo.TsmcpUser">
+  <update id="updateByPrimaryKey" parameterType="com.tencent.pojoUser">
     update tsmcp_user
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

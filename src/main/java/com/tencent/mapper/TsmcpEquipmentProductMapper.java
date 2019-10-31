@@ -1,33 +1,29 @@
-package com.tencent.tsmcp.mapper;
-
-import com.tencent.tsmcp.pojo.TsmcpEquipmentProduct;
-import com.tencent.tsmcp.pojo.TsmcpEquipmentProductExample;
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TsmcpEquipmentProductMapper {
-    long countByExample(TsmcpEquipmentProductExample example);
+    long countByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
 
-    int deleteByExample(TsmcpEquipmentProductExample example);
+    int deleteByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(TsmcpEquipmentProduct record);
+    int insert(com.tencent.pojo.TsmcpEquipmentProduct record);
 
-    int insertSelective(TsmcpEquipmentProduct record);
+    int insertSelective(com.tencent.pojo.TsmcpEquipmentProduct record);
 
-    List<TsmcpEquipmentProduct> selectByExample(TsmcpEquipmentProductExample example);
+    List<com.tencent.pojo.TsmcpEquipmentProduct> selectByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
 
-    TsmcpEquipmentProduct selectByPrimaryKey(Integer id);
+    com.tencent.pojo.TsmcpEquipmentProduct selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") TsmcpEquipmentProduct record, @Param("example") TsmcpEquipmentProductExample example);
+    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpEquipmentProduct record, @Param("example") com.tencent.pojo.TsmcpEquipmentProductExample example);
 
-    int updateByExample(@Param("record") TsmcpEquipmentProduct record, @Param("example") TsmcpEquipmentProductExample example);
+    int updateByExample(@Param("record") com.tencent.pojo.TsmcpEquipmentProduct record, @Param("example") com.tencent.pojo.TsmcpEquipmentProductExample example);
 
-    int updateByPrimaryKeySelective(TsmcpEquipmentProduct record);
+    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpEquipmentProduct record);
 
-    int updateByPrimaryKey(TsmcpEquipmentProduct record);
+    int updateByPrimaryKey(com.tencent.pojo.TsmcpEquipmentProduct record);
 }

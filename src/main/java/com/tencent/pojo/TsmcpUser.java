@@ -1,6 +1,7 @@
-package com.tencent.tsmcp.pojo;
+package com.tencent.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class TsmcpUser {
     private Integer id;
@@ -32,6 +33,7 @@ public class TsmcpUser {
     private Integer roleId;
 
     private Integer factoryId;
+
 
     public Integer getId() {
         return id;

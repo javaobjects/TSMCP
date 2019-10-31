@@ -1,7 +1,8 @@
-package com.tencent.tsmcp.service;
+package com.tencent.service;
 
+import com.tencent.pojo.TsmcpUser;
 
-import com.tencent.tsmcp.pojo.TsmcpUser;
+import java.util.List;
 
 /**
  * @author xianxian
@@ -22,4 +23,6 @@ public interface ITsmcpUserService {
      * 用户登录
      */
     public TsmcpUser Login(String user_name, String user_password);
+
+    public List<TsmcpUser> selectAll();
 }

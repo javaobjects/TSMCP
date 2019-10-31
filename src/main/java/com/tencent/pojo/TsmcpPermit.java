@@ -1,4 +1,4 @@
-package com.tencent.tsmcp.pojo;
+package com.tencent.pojo;
 
 public class TsmcpPermit {
     private Integer id;

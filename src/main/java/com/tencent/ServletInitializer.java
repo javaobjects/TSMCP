@@ -1,4 +1,4 @@
-package com.tencent.tsmcp;
+package com.tencent;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

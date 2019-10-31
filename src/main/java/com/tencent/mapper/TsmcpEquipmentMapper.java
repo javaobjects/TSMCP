@@ -1,33 +1,31 @@
-package com.tencent.tsmcp.mapper;
-
-import com.tencent.tsmcp.pojo.TsmcpEquipment;
-import com.tencent.tsmcp.pojo.TsmcpEquipmentExample;
-import java.util.List;
+package com.tencent.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TsmcpEquipmentMapper {
-    long countByExample(TsmcpEquipmentExample example);
+    long countByExample(com.tencent.pojo.TsmcpEquipmentExample example);
 
-    int deleteByExample(TsmcpEquipmentExample example);
+    int deleteByExample(com.tencent.pojo.TsmcpEquipmentExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(TsmcpEquipment record);
+    int insert(com.tencent.pojo.TsmcpEquipment record);
 
-    int insertSelective(TsmcpEquipment record);
+    int insertSelective(com.tencent.pojo.TsmcpEquipment record);
 
-    List<TsmcpEquipment> selectByExample(TsmcpEquipmentExample example);
+    List<com.tencent.pojo.TsmcpEquipment> selectByExample(com.tencent.pojo.TsmcpEquipmentExample example);
 
-    TsmcpEquipment selectByPrimaryKey(Integer id);
+    com.tencent.pojo.TsmcpEquipment selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") TsmcpEquipment record, @Param("example") TsmcpEquipmentExample example);
+    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpEquipment record, @Param("example") com.tencent.pojo.TsmcpEquipmentExample example);
 
-    int updateByExample(@Param("record") TsmcpEquipment record, @Param("example") TsmcpEquipmentExample example);
+    int updateByExample(@Param("record") com.tencent.pojo.TsmcpEquipment record, @Param("example") com.tencent.pojo.TsmcpEquipmentExample example);
 
-    int updateByPrimaryKeySelective(TsmcpEquipment record);
+    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpEquipment record);
 
-    int updateByPrimaryKey(TsmcpEquipment record);
+    int updateByPrimaryKey(com.tencent.pojo.TsmcpEquipment record);
 }

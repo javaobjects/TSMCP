@@ -1,7 +1,7 @@
-package com.tencent.tsmcp;
+package com.tencent;
 
-import com.tencent.tsmcp.mapper.TsmcpUserMapper;
-import com.tencent.tsmcp.pojo.TsmcpUser;
+import com.tencent.mapper.TsmcpUserMapper;
+import com.tencent.pojo.TsmcpUser;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;

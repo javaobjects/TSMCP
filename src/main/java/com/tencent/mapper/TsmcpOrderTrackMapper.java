@@ -1,33 +1,31 @@
-package com.tencent.tsmcp.mapper;
-
-import com.tencent.tsmcp.pojo.TsmcpOrderTrack;
-import com.tencent.tsmcp.pojo.TsmcpOrderTrackExample;
-import java.util.List;
+package com.tencent.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TsmcpOrderTrackMapper {
-    long countByExample(TsmcpOrderTrackExample example);
+    long countByExample(com.tencent.pojo.TsmcpOrderTrackExample example);
 
-    int deleteByExample(TsmcpOrderTrackExample example);
+    int deleteByExample(com.tencent.pojo.TsmcpOrderTrackExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(TsmcpOrderTrack record);
+    int insert(com.tencent.pojo.TsmcpOrderTrack record);
 
-    int insertSelective(TsmcpOrderTrack record);
+    int insertSelective(com.tencent.pojo.TsmcpOrderTrack record);
 
-    List<TsmcpOrderTrack> selectByExample(TsmcpOrderTrackExample example);
+    List<com.tencent.pojo.TsmcpOrderTrack> selectByExample(com.tencent.pojo.TsmcpOrderTrackExample example);
 
-    TsmcpOrderTrack selectByPrimaryKey(Integer id);
+    com.tencent.pojo.TsmcpOrderTrack selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") TsmcpOrderTrack record, @Param("example") TsmcpOrderTrackExample example);
+    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpOrderTrack record, @Param("example") com.tencent.pojo.TsmcpOrderTrackExample example);
 
-    int updateByExample(@Param("record") TsmcpOrderTrack record, @Param("example") TsmcpOrderTrackExample example);
+    int updateByExample(@Param("record") com.tencent.pojo.TsmcpOrderTrack record, @Param("example") com.tencent.pojo.TsmcpOrderTrackExample example);
 
-    int updateByPrimaryKeySelective(TsmcpOrderTrack record);
+    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpOrderTrack record);
 
-    int updateByPrimaryKey(TsmcpOrderTrack record);
+    int updateByPrimaryKey(com.tencent.pojo.TsmcpOrderTrack record);
 }

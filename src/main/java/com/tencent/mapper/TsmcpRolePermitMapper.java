@@ -1,33 +1,31 @@
-package com.tencent.tsmcp.mapper;
-
-import com.tencent.tsmcp.pojo.TsmcpRolePermit;
-import com.tencent.tsmcp.pojo.TsmcpRolePermitExample;
-import java.util.List;
+package com.tencent.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface TsmcpRolePermitMapper {
-    long countByExample(TsmcpRolePermitExample example);
+    long countByExample(com.tencent.pojo.TsmcpRolePermitExample example);
 
-    int deleteByExample(TsmcpRolePermitExample example);
+    int deleteByExample(com.tencent.pojo.TsmcpRolePermitExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(TsmcpRolePermit record);
+    int insert(com.tencent.pojo.TsmcpRolePermit record);
 
-    int insertSelective(TsmcpRolePermit record);
+    int insertSelective(com.tencent.pojo.TsmcpRolePermit record);
 
-    List<TsmcpRolePermit> selectByExample(TsmcpRolePermitExample example);
+    List<com.tencent.pojo.TsmcpRolePermit> selectByExample(com.tencent.pojo.TsmcpRolePermitExample example);
 
-    TsmcpRolePermit selectByPrimaryKey(Integer id);
+    com.tencent.pojo.TsmcpRolePermit selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") TsmcpRolePermit record, @Param("example") TsmcpRolePermitExample example);
+    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpRolePermit record, @Param("example") com.tencent.pojo.TsmcpRolePermitExample example);
 
-    int updateByExample(@Param("record") TsmcpRolePermit record, @Param("example") TsmcpRolePermitExample example);
+    int updateByExample(@Param("record") com.tencent.pojo.TsmcpRolePermit record, @Param("example") com.tencent.pojo.TsmcpRolePermitExample example);
 
-    int updateByPrimaryKeySelective(TsmcpRolePermit record);
+    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpRolePermit record);
 
-    int updateByPrimaryKey(TsmcpRolePermit record);
+    int updateByPrimaryKey(com.tencent.pojo.TsmcpRolePermit record);
 }
