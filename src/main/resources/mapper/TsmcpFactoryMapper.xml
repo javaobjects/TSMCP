@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapperFactoryMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojoFactory">
+<mapper namespace="com.tencent.mapper.TsmcpFactoryMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpFactory">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -78,7 +78,7 @@
     id, flag, create_time, create_userid, update_time, update_userid, bak, factory_name, 
     factory_img_url, factory_addr, factory_url, factory_worker, factory_status
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojoFactoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpFactoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from tsmcp_factory
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojoFactoryExample">
+  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpFactoryExample">
     delete from tsmcp_factory
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojoFactory">
+  <insert id="insert" parameterType="com.tencent.pojo.TsmcpFactory">
     insert into tsmcp_factory (id, flag, create_time, 
       create_userid, update_time, update_userid, 
       bak, factory_name, factory_img_url, 
@@ -120,7 +120,7 @@
       #{factoryAddr,jdbcType=VARCHAR}, #{factoryUrl,jdbcType=VARCHAR}, #{factoryWorker,jdbcType=INTEGER}, 
       #{factoryStatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojoFactory">
+  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpFactory">
     insert into tsmcp_factory
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojoFactoryExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpFactoryExample" resultType="java.lang.Long">
     select count(*) from tsmcp_factory
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -277,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojoFactory">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpFactory">
     update tsmcp_factory
     <set>
       <if test="flag != null">
@@ -319,7 +319,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojoFactory">
+  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpFactory">
     update tsmcp_factory
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

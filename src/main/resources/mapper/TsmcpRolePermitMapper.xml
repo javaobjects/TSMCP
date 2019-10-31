@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapperRolePermitMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojoRolePermit">
+<mapper namespace="com.tencent.mapper.TsmcpRolePermitMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpRolePermit">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -74,7 +74,7 @@
     id, flag, create_time, create_userid, update_time, update_userid, factory_id, role_id, 
     permit_id
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojoRolePermitExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpRolePermitExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -98,13 +98,13 @@
     delete from tsmcp_role_permit
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojoRolePermitExample">
+  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpRolePermitExample">
     delete from tsmcp_role_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojoRolePermit">
+  <insert id="insert" parameterType="com.tencent.pojo.TsmcpRolePermit">
     insert into tsmcp_role_permit (id, flag, create_time, 
       create_userid, update_time, update_userid, 
       factory_id, role_id, permit_id
@@ -114,7 +114,7 @@
       #{factoryId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{permitId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojoRolePermit">
+  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpRolePermit">
     insert into tsmcp_role_permit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojoRolePermitExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpRolePermitExample" resultType="java.lang.Long">
     select count(*) from tsmcp_role_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -231,7 +231,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojoRolePermit">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpRolePermit">
     update tsmcp_role_permit
     <set>
       <if test="flag != null">
@@ -261,7 +261,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojoRolePermit">
+  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpRolePermit">
     update tsmcp_role_permit
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

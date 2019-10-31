@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tencent.mapperPermitMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojoPermit">
+<mapper namespace="com.tencent.mapper.TsmcpPermitMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpPermit">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     id, flag, status, parent_id, permit_name, permit_desc, permit_path
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojoPermitExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpPermitExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -95,13 +95,13 @@
     delete from tsmcp_permit
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojoPermitExample">
+  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpPermitExample">
     delete from tsmcp_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojoPermit">
+  <insert id="insert" parameterType="com.tencent.pojo.TsmcpPermit">
     insert into tsmcp_permit (id, flag, status, 
       parent_id, permit_name, permit_desc, 
       permit_path)
@@ -109,7 +109,7 @@
       #{parentId,jdbcType=INTEGER}, #{permitName,jdbcType=VARCHAR}, #{permitDesc,jdbcType=VARCHAR}, 
       #{permitPath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojoPermit">
+  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpPermit">
     insert into tsmcp_permit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojoPermitExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpPermitExample" resultType="java.lang.Long">
     select count(*) from tsmcp_permit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojoPermit">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpPermit">
     update tsmcp_permit
     <set>
       <if test="flag != null">
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojoPermit">
+  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpPermit">
     update tsmcp_permit
     set flag = #{flag,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},

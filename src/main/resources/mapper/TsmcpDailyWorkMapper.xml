@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tencent.mapper.TsmcpDailyWorkMapper">
-  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpDailyWorkMapper">
+  <resultMap id="BaseResultMap" type="com.tencent.pojo.TsmcpDailyWork">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -83,7 +83,7 @@
     equipment_seq, start_time, end_time, working_count, qualified_count, unqualified_cout, 
     complete_flag, factory_id, bak
   </sql>
-  <select id="selectByExample" parameterType="com.tencent.pojoDailyWorkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -107,13 +107,13 @@
     delete from tsmcp_daily_work
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tencent.pojoDailyWorkExample">
+  <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample">
     delete from tsmcp_daily_work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tencent.pojoDailyWork">
+  <insert id="insert" parameterType="com.tencent.pojo.TsmcpDailyWork">
     insert into tsmcp_daily_work (id, flag, create_time, 
       create_userid, update_time, update_userid, 
       schedule_id, equipment_id, equipment_seq, 
@@ -127,7 +127,7 @@
       #{qualifiedCount,jdbcType=INTEGER}, #{unqualifiedCout,jdbcType=INTEGER}, #{completeFlag,jdbcType=INTEGER}, 
       #{factoryId,jdbcType=INTEGER}, #{bak,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojoDailyWork">
+  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpDailyWork">
     insert into tsmcp_daily_work
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -236,7 +236,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tencent.pojoDailyWorkExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tencent.pojo.TsmcpDailyWorkExample" resultType="java.lang.Long">
     select count(*) from tsmcp_daily_work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -324,7 +324,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojoDailyWork">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tencent.pojo.TsmcpDailyWork">
     update tsmcp_daily_work
     <set>
       <if test="flag != null">
@@ -378,7 +378,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tencent.pojoDailyWork">
+  <update id="updateByPrimaryKey" parameterType="com.tencent.pojo.TsmcpDailyWork">
     update tsmcp_daily_work
     set flag = #{flag,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
