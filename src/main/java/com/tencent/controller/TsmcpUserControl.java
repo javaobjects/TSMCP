@@ -1,5 +1,7 @@
 package com.tencent.controller;
 
+import com.tencent.pojo.TsmcpUser;
+import com.tencent.service.ITsmcpUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +18,19 @@ import java.util.List;
 
 @RestController
 public class TsmcpUserControl {
+
     @Autowired
-    private com.tencent.service.ITsmcpUserService iTsmcpUserService;
+    private ITsmcpUserService iTsmcpUserService;
 
     @RequestMapping("/selectAll")
     public List<com.tencent.pojo.TsmcpUser> selectAll(){
         return iTsmcpUserService.selectAll();
+    }
+
+    @RequestMapping("/Login")
+    public com.tencent.pojo.TsmcpUser login(String username, String password){
+        TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
+        return  tsmcpUser;
     }
 
 }
