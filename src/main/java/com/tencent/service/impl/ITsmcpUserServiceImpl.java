@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -19,12 +20,10 @@ import java.util.List;
 
 @Service("ITsmcpUserService")
 @Transactional  //开启注解事务
-public class ITsmcpUserServiceImpl implements ITsmcpUserService {
+public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
 
     @Autowired
     private TsmcpUserMapper tsmcpUserMapper;
-
-
 
     @Override
     public TsmcpUser Login(String user_name, String user_password) {
