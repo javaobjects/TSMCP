@@ -32,7 +32,8 @@ public class TsmcpUserControl {
 //    @GetMapping("/Login")
     @PostMapping("/Login")
     public TsmcpUser login(String username, String password){
-        TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
+//        TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
+        TsmcpUser tsmcpUser = iTsmcpUserService.Login(username,password);
         return  tsmcpUser;
     }
 
