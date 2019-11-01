@@ -1,31 +1,34 @@
 package com.tencent.mapper;
 
+import com.tencent.pojo.TsmcpProductPlan;
+import com.tencent.pojo.TsmcpProductPlanExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 
 @Mapper
 public interface TsmcpProductPlanMapper {
-    long countByExample(com.tencent.pojo.TsmcpProductPlanExample example);
+    long countByExample(TsmcpProductPlanExample example);
 
-    int deleteByExample(com.tencent.pojo.TsmcpProductPlanExample example);
+    int deleteByExample(TsmcpProductPlanExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(com.tencent.pojo.TsmcpProductPlan record);
+    int insert(TsmcpProductPlan record);
 
-    int insertSelective(com.tencent.pojo.TsmcpProductPlan record);
+    int insertSelective(TsmcpProductPlan record);
 
-    List<com.tencent.pojo.TsmcpProductPlan> selectByExample(com.tencent.pojo.TsmcpProductPlanExample example);
+    List<TsmcpProductPlan> selectByExample(TsmcpProductPlanExample example);
 
-    com.tencent.pojo.TsmcpProductPlan selectByPrimaryKey(Integer id);
+    TsmcpProductPlan selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpProductPlan record, @Param("example") com.tencent.pojo.TsmcpProductPlanExample example);
+    int updateByExampleSelective(@Param("record") TsmcpProductPlan record, @Param("example") TsmcpProductPlanExample example);
 
-    int updateByExample(@Param("record") com.tencent.pojo.TsmcpProductPlan record, @Param("example") com.tencent.pojo.TsmcpProductPlanExample example);
+    int updateByExample(@Param("record") TsmcpProductPlan record, @Param("example") TsmcpProductPlanExample example);
 
-    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpProductPlan record);
+    int updateByPrimaryKeySelective(TsmcpProductPlan record);
 
-    int updateByPrimaryKey(com.tencent.pojo.TsmcpProductPlan record);
+    int updateByPrimaryKey(TsmcpProductPlan record);
 }

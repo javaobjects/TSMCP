@@ -2,30 +2,33 @@ package com.tencent.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import com.tencent.pojo.TsmcpDailyWorkExample;
+import com.tencent.pojo.TsmcpDailyWork;
+
 
 import java.util.List;
 
 @Mapper
 public interface TsmcpDailyWorkMapper {
-    long countByExample(com.tencent.pojo.TsmcpDailyWorkExample example);
+    long countByExample(TsmcpDailyWorkExample example);
 
-    int deleteByExample(com.tencent.pojo.TsmcpDailyWorkExample example);
+    int deleteByExample(TsmcpDailyWorkExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(com.tencent.pojo.TsmcpDailyWork record);
+    int insert(TsmcpDailyWork record);
 
-    int insertSelective(com.tencent.pojo.TsmcpDailyWork record);
+    int insertSelective(TsmcpDailyWork record);
 
-    List<com.tencent.pojo.TsmcpDailyWork> selectByExample(com.tencent.pojo.TsmcpDailyWorkExample example);
+    List<TsmcpDailyWork> selectByExample(TsmcpDailyWorkExample example);
 
-    com.tencent.pojo.TsmcpDailyWork selectByPrimaryKey(Integer id);
+    TsmcpDailyWork selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpDailyWork record, @Param("example") com.tencent.pojo.TsmcpDailyWorkExample example);
+    int updateByExampleSelective(@Param("record") TsmcpDailyWork record, @Param("example") TsmcpDailyWorkExample example);
 
-    int updateByExample(@Param("record") com.tencent.pojo.TsmcpDailyWork record, @Param("example") com.tencent.pojo.TsmcpDailyWorkExample example);
+    int updateByExample(@Param("record") TsmcpDailyWork record, @Param("example") TsmcpDailyWorkExample example);
 
-    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpDailyWork record);
+    int updateByPrimaryKeySelective(TsmcpDailyWork record);
 
-    int updateByPrimaryKey(com.tencent.pojo.TsmcpDailyWork record);
+    int updateByPrimaryKey(TsmcpDailyWork record);
 }

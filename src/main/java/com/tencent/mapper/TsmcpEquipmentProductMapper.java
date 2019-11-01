@@ -1,29 +1,31 @@
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import com.tencent.pojo.TsmcpEquipmentProductExample;
+import com.tencent.pojo.TsmcpEquipmentProduct;
 
 import java.util.List;
 
 @Mapper
 public interface TsmcpEquipmentProductMapper {
-    long countByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
+    long countByExample(TsmcpEquipmentProductExample example);
 
-    int deleteByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
+    int deleteByExample(TsmcpEquipmentProductExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(com.tencent.pojo.TsmcpEquipmentProduct record);
+    int insert(TsmcpEquipmentProduct record);
 
-    int insertSelective(com.tencent.pojo.TsmcpEquipmentProduct record);
+    int insertSelective(TsmcpEquipmentProduct record);
 
-    List<com.tencent.pojo.TsmcpEquipmentProduct> selectByExample(com.tencent.pojo.TsmcpEquipmentProductExample example);
+    List<TsmcpEquipmentProduct> selectByExample(TsmcpEquipmentProductExample example);
 
-    com.tencent.pojo.TsmcpEquipmentProduct selectByPrimaryKey(Integer id);
+    TsmcpEquipmentProduct selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpEquipmentProduct record, @Param("example") com.tencent.pojo.TsmcpEquipmentProductExample example);
+    int updateByExampleSelective(@Param("record") TsmcpEquipmentProduct record, @Param("example") TsmcpEquipmentProductExample example);
 
-    int updateByExample(@Param("record") com.tencent.pojo.TsmcpEquipmentProduct record, @Param("example") com.tencent.pojo.TsmcpEquipmentProductExample example);
+    int updateByExample(@Param("record") TsmcpEquipmentProduct record, @Param("example") TsmcpEquipmentProductExample example);
 
-    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpEquipmentProduct record);
+    int updateByPrimaryKeySelective(TsmcpEquipmentProduct record);
 
-    int updateByPrimaryKey(com.tencent.pojo.TsmcpEquipmentProduct record);
+    int updateByPrimaryKey(TsmcpEquipmentProduct record);
 }

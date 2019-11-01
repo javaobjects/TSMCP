@@ -1,5 +1,7 @@
 package com.tencent.mapper;
 
+import com.tencent.pojo.TsmcpRolePermit;
+import com.tencent.pojo.TsmcpRolePermitExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -7,25 +9,25 @@ import java.util.List;
 
 @Mapper
 public interface TsmcpRolePermitMapper {
-    long countByExample(com.tencent.pojo.TsmcpRolePermitExample example);
+    long countByExample(TsmcpRolePermitExample example);
 
-    int deleteByExample(com.tencent.pojo.TsmcpRolePermitExample example);
+    int deleteByExample(TsmcpRolePermitExample example);
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(com.tencent.pojo.TsmcpRolePermit record);
+    int insert(TsmcpRolePermit record);
 
-    int insertSelective(com.tencent.pojo.TsmcpRolePermit record);
+    int insertSelective(TsmcpRolePermit record);
 
-    List<com.tencent.pojo.TsmcpRolePermit> selectByExample(com.tencent.pojo.TsmcpRolePermitExample example);
+    List<TsmcpRolePermit> selectByExample(TsmcpRolePermitExample example);
 
-    com.tencent.pojo.TsmcpRolePermit selectByPrimaryKey(Integer id);
+    TsmcpRolePermit selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") com.tencent.pojo.TsmcpRolePermit record, @Param("example") com.tencent.pojo.TsmcpRolePermitExample example);
+    int updateByExampleSelective(@Param("record") TsmcpRolePermit record, @Param("example") TsmcpRolePermitExample example);
 
-    int updateByExample(@Param("record") com.tencent.pojo.TsmcpRolePermit record, @Param("example") com.tencent.pojo.TsmcpRolePermitExample example);
+    int updateByExample(@Param("record") TsmcpRolePermit record, @Param("example") TsmcpRolePermitExample example);
 
-    int updateByPrimaryKeySelective(com.tencent.pojo.TsmcpRolePermit record);
+    int updateByPrimaryKeySelective(TsmcpRolePermit record);
 
-    int updateByPrimaryKey(com.tencent.pojo.TsmcpRolePermit record);
+    int updateByPrimaryKey(TsmcpRolePermit record);
 }
