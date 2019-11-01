@@ -24,14 +24,14 @@ public class TsmcpUserControl {
     private ITsmcpUserService iTsmcpUserService;
 
     @RequestMapping("/selectAll")
-    public List<com.tencent.pojo.TsmcpUser> selectAll(){
+    public List<TsmcpUser> selectAll(){
         return iTsmcpUserService.selectAll();
     }
 
 //    @RequestMapping("/Login")
 //    @GetMapping("/Login")
     @PostMapping("/Login")
-    public com.tencent.pojo.TsmcpUser login(String username, String password){
+    public TsmcpUser login(String username, String password){
         TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
         return  tsmcpUser;
     }
