@@ -3,6 +3,7 @@ package com.tencent.controller;
 import com.tencent.pojo.TsmcpUser;
 import com.tencent.service.ITsmcpUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,9 @@ public class TsmcpUserControl {
         return iTsmcpUserService.selectAll();
     }
 
-    @RequestMapping("/Login")
+//    @RequestMapping("/Login")
+//    @GetMapping("/Login")
+    @PostMapping("/Login")
     public com.tencent.pojo.TsmcpUser login(String username, String password){
         TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
         return  tsmcpUser;

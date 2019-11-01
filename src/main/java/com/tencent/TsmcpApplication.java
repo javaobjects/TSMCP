@@ -9,5 +9,4 @@ public class TsmcpApplication {
     public static void main(String[] args) {
         SpringApplication.run(TsmcpApplication.class, args);
     }
-
 }
