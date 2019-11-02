@@ -28,11 +28,8 @@ public class TsmcpUserControl {
         return iTsmcpUserService.selectAll();
     }
 
-//    @RequestMapping("/Login")
-//    @GetMapping("/Login")
     @PostMapping("/Login")
     public List<TsmcpUser> login(String username, String password){
-//        TsmcpUser tsmcpUser = iTsmcpUserService.Login("SCOTT","123456");
         List<TsmcpUser> tsmcpUser = iTsmcpUserService.Login(username,password);
         return  tsmcpUser;
     }
