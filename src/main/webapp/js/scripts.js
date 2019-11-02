@@ -2311,10 +2311,12 @@ try{
     // errorMessage(e);
 }
 
-
 //knob
+let page = location.pathname.split(".")[0].replace(/\//,"");
+if(page == "index"){
+    $(".knob").knob();
+}
 
-// $(".knob").knob();
 
 
 
