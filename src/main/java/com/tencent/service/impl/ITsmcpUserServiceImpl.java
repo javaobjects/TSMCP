@@ -26,8 +26,8 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     private TsmcpUserMapper tsmcpUserMapper;
 
     @Override
-    public TsmcpUser Login(String user_name, String user_password) {
-        TsmcpUser tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
+    public List<TsmcpUser> Login(String user_name, String user_password) {
+        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
         return tsmcpUser;
     }
 

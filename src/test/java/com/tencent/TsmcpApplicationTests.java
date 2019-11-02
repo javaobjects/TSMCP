@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class TsmcpApplicationTests {
 
@@ -26,8 +28,8 @@ class TsmcpApplicationTests {
         TsmcpUserMapper tsmcpUserMapper = session.getMapper(TsmcpUserMapper.class);
 
         //3.调用查询
-        TsmcpUser tsmcpUser = tsmcpUserMapper.Login("SCOTT","123456");
-        System.out.println(tsmcpUser);
+        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login("SCOTT","123456");
+        System.out.println(tsmcpUser.toString());
     }
 
 }

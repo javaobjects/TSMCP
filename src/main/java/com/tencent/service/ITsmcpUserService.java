@@ -22,7 +22,7 @@ public interface ITsmcpUserService {
      * @Description
      * 用户登录
      */
-    public TsmcpUser Login(String user_name, String user_password);
+    public List<TsmcpUser> Login(String user_name, String user_password);
 
     public List<TsmcpUser> selectAll();
 }
