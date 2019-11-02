@@ -31,7 +31,18 @@ public class TsmcpUserControl {
     @PostMapping("/Login")
     public List<TsmcpUser> login(String username, String password){
         List<TsmcpUser> tsmcpUser = iTsmcpUserService.Login(username,password);
+
+//        List<Object> objects = new ArrayList<>();
+
+//        objects.add({
+//                key:value,
+//                key2:value2;
+//        })
+
+//        return [{result:boolean,message:String}];
+
         return  tsmcpUser;
+
     }
 
 }
