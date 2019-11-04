@@ -59,9 +59,30 @@ public class TsmcpUserControl {
         return  tsmcpUser;
     }
 
+    /**
+     * 判断用户名是否已存在
+     * @param username
+     * @return
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
     @PostMapping("/isExistUsername")
     public Boolean isExistUsername(String username){
         Boolean result = iTsmcpUserService.isExistUsername(username);
         return result;
+    }
+
+    /**
+     * 获取所有的工厂ID
+     * @return
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
+    @PostMapping("/getAllFactoryIds")
+    public List<Integer> getAllFactoryIds(){
+        List<Integer> list = iTsmcpUserService.getAllFactoryIds();
+        return list;
     }
 }

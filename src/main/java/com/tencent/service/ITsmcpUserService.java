@@ -35,4 +35,13 @@ public interface ITsmcpUserService {
      * @Description
      */
     public Boolean isExistUsername(String username);
+
+    /**
+     * 获取所有的工厂ID
+     * @return
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
+    public List<Integer> getAllFactoryIds();
 }

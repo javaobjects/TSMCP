@@ -246,7 +246,15 @@
   <select id="isExistUsername" parameterType="String" resultMap="BaseResultMap">
     select tsmcp_user.user_name from tsmcp_user where user_name = #{user_name};
   </select>
-
+  <!--
+     * @author xianxian
+     * @create:2019-11-04
+     * @Description
+     * 查询所有的工厂id
+  -->
+  <select id="getAllFactoryIds" resultType="java.lang.Integer">
+    select id from tsmcp_factory;
+  </select>
 
   <update id="updateByExampleSelective" parameterType="map">
     update tsmcp_user

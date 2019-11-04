@@ -46,4 +46,10 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
             return false;
         }
     }
+
+    @Override
+    public List<Integer> getAllFactoryIds() {
+        List<Integer> list = tsmcpUserMapper.getAllFactoryIds();
+        return list;
+    }
 }
