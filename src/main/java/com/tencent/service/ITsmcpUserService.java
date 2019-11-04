@@ -25,4 +25,14 @@ public interface ITsmcpUserService {
     public List<TsmcpUser> Login(String user_name, String user_password);
 
     public List<TsmcpUser> selectAll();
+
+    /**
+     * 查询用户名是否已存在
+     * @param username
+     * @return Boolean
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
+    public Boolean isExistUsername(String username);
 }

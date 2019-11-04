@@ -36,4 +36,14 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
 
         return tsmcpUserMapper.selectAll();
     }
+
+    @Override
+    public Boolean isExistUsername(String username) {
+        TsmcpUser tsmcpUser = tsmcpUserMapper.isExistUsername(username);
+        if(tsmcpUser == null){
+            return true;//表示不存在可注册
+        }else {
+            return false;
+        }
+    }
 }

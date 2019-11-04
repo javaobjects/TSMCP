@@ -30,7 +30,21 @@ public class TsmcpUserControl {
 
     @PostMapping("/Login")
     public List<TsmcpUser> login(String username, String password){
+//    public Map<Boolean,String> login(String username, String password){
         List<TsmcpUser> tsmcpUser = iTsmcpUserService.Login(username,password);
+//        Map<> tsmcpUser = iTsmcpUserService.Login(username,password);
+
+//        Map<Boolean,String> map =new HashMap<>();
+//
+//        if(tsmcpUser == null){
+//            Boolean result = false;
+//            map.put(result,"密码错误");
+//        }else {
+//            Boolean result = true;
+//            map.put(result,"");
+//        }
+
+
 
 //        List<Object> objects = new ArrayList<>();
 
@@ -41,8 +55,13 @@ public class TsmcpUserControl {
 
 //        return [{result:boolean,message:String}];
 
+//        return  map;
         return  tsmcpUser;
-
     }
 
+    @PostMapping("/isExistUsername")
+    public Boolean isExistUsername(String username){
+        Boolean result = iTsmcpUserService.isExistUsername(username);
+        return result;
+    }
 }

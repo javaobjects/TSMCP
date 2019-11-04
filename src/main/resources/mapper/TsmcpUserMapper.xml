@@ -236,6 +236,18 @@
   <select id="Login" parameterType="String" resultMap="BaseResultMap">
     select * from tsmcp_user where user_name = #{user_name} and user_passwd = #{user_password}
   </select>
+
+  <!--
+     * @author xianxian
+     * @create:2019-11-04
+     * @Description
+     * 查询用户名是否存在
+  -->
+  <select id="isExistUsername" parameterType="String" resultMap="BaseResultMap">
+    select tsmcp_user.user_name from tsmcp_user where user_name = #{user_name};
+  </select>
+
+
   <update id="updateByExampleSelective" parameterType="map">
     update tsmcp_user
     <set>

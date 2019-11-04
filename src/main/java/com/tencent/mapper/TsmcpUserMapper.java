@@ -48,4 +48,7 @@ public interface TsmcpUserMapper {
     public List<TsmcpUser> Login(@Param("user_name") String user_name, @Param("user_password") String user_password);
 
     public List<TsmcpUser> selectAll();
+
+    public TsmcpUser isExistUsername(String username);
+
 }
