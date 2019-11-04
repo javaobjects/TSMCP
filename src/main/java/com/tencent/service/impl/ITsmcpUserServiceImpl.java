@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName ITsmcpUserServiceImpl.java
@@ -25,10 +27,41 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     @Autowired
     private TsmcpUserMapper tsmcpUserMapper;
 
+//    @Override
+//    public List<TsmcpUser> Login(String user_name, String user_password) {
+//        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
+//        return tsmcpUser;
+//    }
+
+//    @Override
+//    public Map<Boolean,String> Login(String user_name, String user_password) {
+//        Map<> tsmcpUser = tsmcpUserMapper.Login(username,password);
+//        Map<Boolean,String> map =new HashMap<>();
+//        if(tsmcpUser == null){
+//            Boolean result = false;
+//            map.put(result,"密码错误");
+//        }else {
+//            Boolean result = true;
+//            map.put(result,"");
+//        }
+//        List<Object> objects = new ArrayList<>();
+//        return  map;
+//    }
+
+
     @Override
-    public List<TsmcpUser> Login(String user_name, String user_password) {
+    public Map<Boolean, String> Login(String user_name, String user_password) {
         List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
-        return tsmcpUser;
+        Map<Boolean,String> map =new HashMap<>();
+        if(tsmcpUser == null){
+            Boolean result = false;
+            map.put(result,"密码错误");
+        }else {
+            Boolean result = true;
+            map.put(result,"");
+        }
+//        List<Object> objects = new ArrayList<>();
+        return  map;
     }
 
     @Override

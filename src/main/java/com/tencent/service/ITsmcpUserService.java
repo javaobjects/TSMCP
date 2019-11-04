@@ -3,6 +3,7 @@ package com.tencent.service;
 import com.tencent.pojo.TsmcpUser;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xianxian
@@ -22,7 +23,8 @@ public interface ITsmcpUserService {
      * @Description
      * 用户登录
      */
-    public List<TsmcpUser> Login(String user_name, String user_password);
+//    public List<TsmcpUser> Login(String user_name, String user_password);
+    public Map<Boolean,String> Login(String user_name, String user_password);
 
     public List<TsmcpUser> selectAll();
 

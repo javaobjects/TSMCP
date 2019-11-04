@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName TsmcpUserControl.java
@@ -29,33 +30,8 @@ public class TsmcpUserControl {
     }
 
     @PostMapping("/Login")
-    public List<TsmcpUser> login(String username, String password){
-//    public Map<Boolean,String> login(String username, String password){
-        List<TsmcpUser> tsmcpUser = iTsmcpUserService.Login(username,password);
-//        Map<> tsmcpUser = iTsmcpUserService.Login(username,password);
-
-//        Map<Boolean,String> map =new HashMap<>();
-//
-//        if(tsmcpUser == null){
-//            Boolean result = false;
-//            map.put(result,"密码错误");
-//        }else {
-//            Boolean result = true;
-//            map.put(result,"");
-//        }
-
-
-
-//        List<Object> objects = new ArrayList<>();
-
-//        objects.add({
-//                key:value,
-//                key2:value2;
-//        })
-
-//        return [{result:boolean,message:String}];
-
-//        return  map;
+    public Map<Boolean,String> login(String username, String password){
+        Map<Boolean,String> tsmcpUser = iTsmcpUserService.Login(username,password);
         return  tsmcpUser;
     }
 
