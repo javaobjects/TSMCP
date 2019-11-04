@@ -124,7 +124,9 @@
       #{userEmail,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, #{factoryId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpUser">
+
+<!--  <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpUser">-->
+  <insert id="insertIntoTsmcpUser" parameterType="com.tencent.pojo.TsmcpUser">
     insert into tsmcp_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -171,6 +173,9 @@
       </if>
       <if test="factoryId != null">
         factory_id,
+      </if>
+      <if test="remarks != null">
+        remarks
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -219,8 +224,14 @@
       <if test="factoryId != null">
         #{factoryId,jdbcType=INTEGER},
       </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR}
+      </if>
     </trim>
   </insert>
+
+
+
   <select id="countByExample" parameterType="com.tencent.pojo.TsmcpUserExample" resultType="java.lang.Long">
     select count(*) from tsmcp_user
     <if test="_parameter != null">

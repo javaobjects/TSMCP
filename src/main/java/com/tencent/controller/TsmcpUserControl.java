@@ -85,4 +85,18 @@ public class TsmcpUserControl {
         List<Integer> list = iTsmcpUserService.getAllFactoryIds();
         return list;
     }
+
+    /**
+     * 用户注册
+     * @param tsmcpUser
+     * @return
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
+    @PostMapping("/insertIntoTsmcpUser")
+    public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser){
+        Boolean result = iTsmcpUserService.insertIntoTsmcpUser(tsmcpUser);
+        return result;
+    }
 }

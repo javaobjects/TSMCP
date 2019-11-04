@@ -44,4 +44,14 @@ public interface ITsmcpUserService {
      * @Description
      */
     public List<Integer> getAllFactoryIds();
+
+    /**
+     * 用户注册
+     * @param tsmcpUser
+     * @return
+     * @author xianxian
+     * @create:2019-10-29
+     * @Description
+     */
+    public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser);
 }

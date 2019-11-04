@@ -1,7 +1,6 @@
 package com.tencent.pojo;
 
 import java.util.Date;
-import java.util.List;
 
 public class TsmcpUser {
     private Integer id;
@@ -34,6 +33,9 @@ public class TsmcpUser {
 
     private Integer factoryId;
 
+
+
+    private String remarks;
 
     public Integer getId() {
         return id;
@@ -155,15 +157,24 @@ public class TsmcpUser {
         this.factoryId = factoryId;
     }
 
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
     public TsmcpUser() {
     }
-    public TsmcpUser(Integer id, Integer flag,
-                     Date createTime, Integer createUserid,
+
+    public TsmcpUser(Integer id, Integer flag, Date createTime, Integer createUserid,
                      Date updateTime, Integer updateUserid,
                      Integer userStatus, String userName,
                      String userRealName, String userPasswd,
                      String userJobNum, String userPhoneNum,
-                     String userEmail, Integer roleId, Integer factoryId) {
+                     String userEmail, Integer roleId,
+                     Integer factoryId, String remarks) {
         this.id = id;
         this.flag = flag;
         this.createTime = createTime;
@@ -179,6 +190,7 @@ public class TsmcpUser {
         this.userEmail = userEmail;
         this.roleId = roleId;
         this.factoryId = factoryId;
+        this.remarks = remarks;
     }
 
     @Override
@@ -199,6 +211,7 @@ public class TsmcpUser {
                 ", userEmail='" + userEmail + '\'' +
                 ", roleId=" + roleId +
                 ", factoryId=" + factoryId +
+                ", remarks='" + remarks + '\'' +
                 '}';
     }
 }

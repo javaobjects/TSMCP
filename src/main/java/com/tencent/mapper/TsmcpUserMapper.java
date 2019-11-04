@@ -52,4 +52,6 @@ public interface TsmcpUserMapper {
     public TsmcpUser isExistUsername(String username);
 
     public List<Integer> getAllFactoryIds();
+
+    public Integer insertIntoTsmcpUser(TsmcpUser tsmcpUser);
 }

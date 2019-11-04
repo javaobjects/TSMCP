@@ -52,4 +52,16 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
         List<Integer> list = tsmcpUserMapper.getAllFactoryIds();
         return list;
     }
+
+    @Override
+    public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser) {
+        Integer num = tsmcpUserMapper.insertIntoTsmcpUser(tsmcpUser);
+        if(num == 1){
+            //插入成功
+            return true;
+        }else {
+            //插入失败
+            return false;
+        }
+    }
 }
