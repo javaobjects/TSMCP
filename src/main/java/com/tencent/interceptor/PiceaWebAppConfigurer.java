@@ -20,8 +20,7 @@ public class PiceaWebAppConfigurer implements WebMvcConfigurer {
                 .addResourceLocations("/css/**")
                 .addResourceLocations("/font/**")
                 .addResourceLocations("/img/**")
-                .addResourceLocations("/js/**")
-        ;
+                .addResourceLocations("/js/**");
     }
 
     @Override
