@@ -4,10 +4,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpProductExample;
 import com.tencent.pojo.TsmcpProduct;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface TsmcpProductMapper {
     long countByExample(TsmcpProductExample example);
 
@@ -30,4 +32,6 @@ public interface TsmcpProductMapper {
     int updateByPrimaryKeySelective(TsmcpProduct record);
 
     int updateByPrimaryKey(TsmcpProduct record);
+
+    List<TsmcpProduct> selectAll();
 }

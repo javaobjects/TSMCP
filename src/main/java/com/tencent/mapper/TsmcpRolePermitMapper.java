@@ -1,19 +1,22 @@
 package com.tencent.mapper;
 
-import com.tencent.pojo.TsmcpRolePermit;
-import com.tencent.pojo.TsmcpRolePermitExample;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import com.tencent.pojo.TsmcpRolePermit;
+import com.tencent.pojo.TsmcpRolePermitExample;
+import com.tencent.pojo.TsmcpRolePermitKey;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Mapper
+@Repository
 public interface TsmcpRolePermitMapper {
     long countByExample(TsmcpRolePermitExample example);
 
     int deleteByExample(TsmcpRolePermitExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(TsmcpRolePermitKey key);
 
     int insert(TsmcpRolePermit record);
 
@@ -21,7 +24,7 @@ public interface TsmcpRolePermitMapper {
 
     List<TsmcpRolePermit> selectByExample(TsmcpRolePermitExample example);
 
-    TsmcpRolePermit selectByPrimaryKey(Integer id);
+    TsmcpRolePermit selectByPrimaryKey(TsmcpRolePermitKey key);
 
     int updateByExampleSelective(@Param("record") TsmcpRolePermit record, @Param("example") TsmcpRolePermitExample example);
 
@@ -30,4 +33,7 @@ public interface TsmcpRolePermitMapper {
     int updateByPrimaryKeySelective(TsmcpRolePermit record);
 
     int updateByPrimaryKey(TsmcpRolePermit record);
+
+    //根据用户id查权限id
+    List<TsmcpRolePermit> listByUserId(@Param("userId") Integer id);
 }

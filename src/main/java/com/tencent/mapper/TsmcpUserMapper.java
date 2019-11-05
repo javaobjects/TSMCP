@@ -1,12 +1,11 @@
 package com.tencent.mapper;
 
+import java.util.List;
 import com.tencent.pojo.TsmcpUser;
 import com.tencent.pojo.TsmcpUserExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Mapper
 @Repository
@@ -32,9 +31,8 @@ public interface TsmcpUserMapper {
     int updateByPrimaryKeySelective(TsmcpUser record);
 
     int updateByPrimaryKey(TsmcpUser record);
-
-
-    /**
+    
+     /**
      * @param user_name
      * @param user_password
      * @return Boolean
@@ -50,6 +48,12 @@ public interface TsmcpUserMapper {
     public List<TsmcpUser> selectAll();
 
     public TsmcpUser isExistUsername(String username);
+
+    //通过id查找用户
+    public TsmcpUser selectById(@Param("id") Integer id);
+
+    //通过name查找用户
+    public TsmcpUser selectByName(@Param("name") String name);
 
     public List<Integer> getAllFactoryIds();
 

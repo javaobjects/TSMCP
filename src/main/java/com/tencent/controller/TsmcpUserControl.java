@@ -3,10 +3,13 @@ package com.tencent.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.tencent.pojo.TsmcpUser;
 import com.tencent.service.ITsmcpUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +21,9 @@ import java.util.List;
  * @createTime 2019年10月31日 15:22:00
  */
 
-@RestController
+@Controller
 public class TsmcpUserControl {
+    private Logger logger = LoggerFactory.getLogger(TsmcpUserControl.class);
 
     @Autowired
     private ITsmcpUserService iTsmcpUserService;
@@ -27,6 +31,32 @@ public class TsmcpUserControl {
     @RequestMapping("/selectAll")
     public List<TsmcpUser> selectAll(){
         return iTsmcpUserService.selectAll();
+    }
+
+    @RequestMapping("/")
+    public String showHome() {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        logger.info("当前登陆用户：" + name);
+        return "index.html";
+    }
+
+    @RequestMapping("/login")
+    public String showLogin() {
+        return "login.html";
+    }
+
+    @RequestMapping("/admin")
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String printAdmin() {
+        return "如果你看见这句话，说明你有ROLE_ADMIN角色";
+    }
+
+    @RequestMapping("/user")
+    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String printUser() {
+        return "如果你看见这句话，说明你有ROLE_USER角色";
     }
 
     @PostMapping("/Login")

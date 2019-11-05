@@ -3,7 +3,10 @@ package com.tencent.pojo;
 import java.util.Date;
 
 public class TsmcpRolePermit {
-    private Integer id;
+
+    private Integer roleId;
+
+    private Integer userId;
 
     private Integer flag;
 
@@ -15,18 +18,46 @@ public class TsmcpRolePermit {
 
     private Integer updateUserid;
 
-    private Integer factoryId;
-
-    private Integer roleId;
-
-    private Integer permitId;
-
-    public Integer getId() {
-        return id;
+    public TsmcpRolePermit(Integer roleId, Integer userId, Integer flag, Date createTime, Integer createUserid, Date updateTime, Integer updateUserid) {
+        this.roleId = roleId;
+        this.userId = userId;
+        this.flag = flag;
+        this.createTime = createTime;
+        this.createUserid = createUserid;
+        this.updateTime = updateTime;
+        this.updateUserid = updateUserid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "TsmcpRolePermit{" +
+                "roleId=" + roleId +
+                ", userId=" + userId +
+                ", flag=" + flag +
+                ", createTime=" + createTime +
+                ", createUserid=" + createUserid +
+                ", updateTime=" + updateTime +
+                ", updateUserid=" + updateUserid +
+                '}';
+    }
+
+    public TsmcpRolePermit() {
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getFlag() {
@@ -67,29 +98,5 @@ public class TsmcpRolePermit {
 
     public void setUpdateUserid(Integer updateUserid) {
         this.updateUserid = updateUserid;
-    }
-
-    public Integer getFactoryId() {
-        return factoryId;
-    }
-
-    public void setFactoryId(Integer factoryId) {
-        this.factoryId = factoryId;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public Integer getPermitId() {
-        return permitId;
-    }
-
-    public void setPermitId(Integer permitId) {
-        this.permitId = permitId;
     }
 }

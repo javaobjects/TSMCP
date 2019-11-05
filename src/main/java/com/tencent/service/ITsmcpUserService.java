@@ -56,4 +56,9 @@ public interface ITsmcpUserService {
      * @Description
      */
     public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser);
+
+    public TsmcpUser selectById(Integer id);
+
+    public TsmcpUser selectByName(String name);
+
 }

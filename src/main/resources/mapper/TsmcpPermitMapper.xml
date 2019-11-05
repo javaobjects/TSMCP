@@ -240,4 +240,5 @@
       permit_path = #{permitPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

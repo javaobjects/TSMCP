@@ -27,7 +27,6 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     @Autowired
     private TsmcpUserMapper tsmcpUserMapper;
 
-
     /**
      *
      *
@@ -95,25 +94,14 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     }
 
 
-//    public static void main(String[] args) {
-//        JSONArray jSONArray = new JSONArray();
-//        JSONObject jb = new JSONObject();
-//        jb.put("id", 1);
-//        jb.put("name", "s");
-//        jSONArray.add(jb);
-//        JSONObject j1 = new JSONObject();
-//        j1.put("id", 2);
-//        j1.put("name", "s");
-//        jSONArray.add(j1);
-//        StringBuffer sBuffer = new StringBuffer();
-//        System.out.println(jSONArray.stream());
-//        jSONArray.stream().forEach(jsonobejct->arrayIdToString((JSONObject) jsonobejct,sBuffer));
-//        System.out.println(sBuffer.toString());
-//    }
-//
-//    private static StringBuffer arrayIdToString(JSONObject jsonobejct,
-//                                                StringBuffer sBuffer) {
-//        return sBuffer.append(jsonobejct.getInteger("id")).append(",");
-//    }
+    @Override
+    public TsmcpUser selectById(Integer id) {
+        return tsmcpUserMapper.selectById(id);
+    }
+
+    @Override
+    public TsmcpUser selectByName(String name) {
+        return tsmcpUserMapper.selectByName(name);
+    }
 
 }

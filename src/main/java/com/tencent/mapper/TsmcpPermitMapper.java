@@ -1,13 +1,14 @@
 package com.tencent.mapper;
 
+import java.util.List;
+import com.tencent.pojo.TsmcpPermit;
+import com.tencent.pojo.TsmcpPermitExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import com.tencent.pojo.TsmcpPermitExample;
-import com.tencent.pojo.TsmcpPermit;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 @Mapper
+@Repository
 public interface TsmcpPermitMapper {
     long countByExample(TsmcpPermitExample example);
 

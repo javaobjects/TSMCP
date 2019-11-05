@@ -95,6 +95,12 @@
     from tsmcp_product
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <!-- 查询所有产品 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from tsmcp_product
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tsmcp_product
     where id = #{id,jdbcType=INTEGER}

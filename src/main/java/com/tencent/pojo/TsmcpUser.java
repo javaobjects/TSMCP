@@ -29,11 +29,7 @@ public class TsmcpUser {
 
     private String userEmail;
 
-    private Integer roleId;
-
     private Integer factoryId;
-
-
 
     private String remarks;
 
@@ -141,14 +137,6 @@ public class TsmcpUser {
         this.userEmail = userEmail == null ? null : userEmail.trim();
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
     public Integer getFactoryId() {
         return factoryId;
     }
@@ -157,24 +145,15 @@ public class TsmcpUser {
         this.factoryId = factoryId;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
     public String getRemarks() {
         return remarks;
     }
 
-    public TsmcpUser() {
+    public void setRemarks(String remarks) {
+        this.remarks = remarks == null ? null : remarks.trim();
     }
 
-    public TsmcpUser(Integer id, Integer flag, Date createTime, Integer createUserid,
-                     Date updateTime, Integer updateUserid,
-                     Integer userStatus, String userName,
-                     String userRealName, String userPasswd,
-                     String userJobNum, String userPhoneNum,
-                     String userEmail, Integer roleId,
-                     Integer factoryId, String remarks) {
+    public TsmcpUser(Integer id, Integer flag, Date createTime, Integer createUserid, Date updateTime, Integer updateUserid, Integer userStatus, String userName, String userRealName, String userPasswd, String userJobNum, String userPhoneNum, String userEmail, Integer factoryId, String remarks) {
         this.id = id;
         this.flag = flag;
         this.createTime = createTime;
@@ -188,9 +167,11 @@ public class TsmcpUser {
         this.userJobNum = userJobNum;
         this.userPhoneNum = userPhoneNum;
         this.userEmail = userEmail;
-        this.roleId = roleId;
         this.factoryId = factoryId;
         this.remarks = remarks;
+    }
+
+    public TsmcpUser() {
     }
 
     @Override
@@ -209,7 +190,6 @@ public class TsmcpUser {
                 ", userJobNum='" + userJobNum + '\'' +
                 ", userPhoneNum='" + userPhoneNum + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", roleId=" + roleId +
                 ", factoryId=" + factoryId +
                 ", remarks='" + remarks + '\'' +
                 '}';
