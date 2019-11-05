@@ -1,14 +1,9 @@
 package com.tencent;
 
-import com.tencent.mapper.TsmcpUserMapper;
-import com.tencent.pojo.TsmcpUser;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 class TsmcpApplicationTests {
@@ -22,14 +17,14 @@ class TsmcpApplicationTests {
         //SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("sqlMapConfig.xml"));
 
         //2. 获取SqlSession接口
-        SqlSession session = factory.openSession();
+//        SqlSession session = factory.openSession();
 
         //2.获取TsmcpUserMapper
-        TsmcpUserMapper tsmcpUserMapper = session.getMapper(TsmcpUserMapper.class);
+//        TsmcpUserMapper tsmcpUserMapper = session.getMapper(TsmcpUserMapper.class);
 
         //3.调用查询
-        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login("SCOTT","123456");
-        System.out.println(tsmcpUser.toString());
+//        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login("SCOTT","123456");
+//        System.out.println(tsmcpUser.toString());
     }
 
 }

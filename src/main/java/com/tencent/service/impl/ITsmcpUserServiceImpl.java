@@ -1,5 +1,7 @@
 package com.tencent.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.tencent.mapper.TsmcpUserMapper;
 import com.tencent.pojo.TsmcpUser;
 import com.tencent.service.ITsmcpUserService;
@@ -8,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @ClassName ITsmcpUserServiceImpl.java
@@ -27,46 +27,42 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     @Autowired
     private TsmcpUserMapper tsmcpUserMapper;
 
-//    @Override
-//    public List<TsmcpUser> Login(String user_name, String user_password) {
-//        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
-//        return tsmcpUser;
-//    }
 
-//    @Override
-//    public Map<Boolean,String> Login(String user_name, String user_password) {
-//        Map<> tsmcpUser = tsmcpUserMapper.Login(username,password);
-//        Map<Boolean,String> map =new HashMap<>();
-//        if(tsmcpUser == null){
-//            Boolean result = false;
-//            map.put(result,"密码错误");
-//        }else {
-//            Boolean result = true;
-//            map.put(result,"");
-//        }
-//        List<Object> objects = new ArrayList<>();
-//        return  map;
-//    }
-
+    /**
+     *
+     *
+     *
+     * [{
+     *     result:true/false,
+     *     mes:"",
+     *     num:Integer
+     * },{},{}]
+     *
+     * @param username
+     * @param password
+     * @return
+     */
 
     @Override
-    public Map<Boolean, String> Login(String user_name, String user_password) {
-        List<TsmcpUser> tsmcpUser = tsmcpUserMapper.Login(user_name,user_password);
-        Map<Boolean,String> map =new HashMap<>();
-        if(tsmcpUser == null){
-            Boolean result = false;
-            map.put(result,"密码错误");
+    public JSONArray Login(String username, String password) {
+        List<TsmcpUser> tsmcpUsers = tsmcpUserMapper.Login(username,password);
+        JSONArray jSONArray = new JSONArray();
+        JSONObject jb = new JSONObject();
+        if(tsmcpUsers == null || tsmcpUsers.isEmpty()){
+            //登录不成功
+            jb.put("result",false);
+            jb.put("message","密码错误");
         }else {
-            Boolean result = true;
-            map.put(result,"");
+            //登录成功
+            jb.put("result",true);
+            jb.put("message","");
         }
-//        List<Object> objects = new ArrayList<>();
-        return  map;
+        jSONArray.add(jb);
+        return jSONArray;
     }
 
     @Override
     public List<TsmcpUser> selectAll() {
-
         return tsmcpUserMapper.selectAll();
     }
 
@@ -97,4 +93,27 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
             return false;
         }
     }
+
+
+//    public static void main(String[] args) {
+//        JSONArray jSONArray = new JSONArray();
+//        JSONObject jb = new JSONObject();
+//        jb.put("id", 1);
+//        jb.put("name", "s");
+//        jSONArray.add(jb);
+//        JSONObject j1 = new JSONObject();
+//        j1.put("id", 2);
+//        j1.put("name", "s");
+//        jSONArray.add(j1);
+//        StringBuffer sBuffer = new StringBuffer();
+//        System.out.println(jSONArray.stream());
+//        jSONArray.stream().forEach(jsonobejct->arrayIdToString((JSONObject) jsonobejct,sBuffer));
+//        System.out.println(sBuffer.toString());
+//    }
+//
+//    private static StringBuffer arrayIdToString(JSONObject jsonobejct,
+//                                                StringBuffer sBuffer) {
+//        return sBuffer.append(jsonobejct.getInteger("id")).append(",");
+//    }
+
 }

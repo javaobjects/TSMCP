@@ -36,7 +36,7 @@
 
 2. mybatis逆向工程
 
-3. ssm 
+3. springboot + springmvc + mybatis
 
-4. springboot
+4. [Lambda](https://www.runoob.com/java/java8-lambda-expressions.html)
 

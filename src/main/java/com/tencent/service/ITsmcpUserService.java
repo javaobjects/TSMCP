@@ -1,9 +1,9 @@
 package com.tencent.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.tencent.pojo.TsmcpUser;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author xianxian
@@ -15,16 +15,16 @@ import java.util.Map;
 public interface ITsmcpUserService {
 
     /**
-     * @param user_name
-     * @param user_password
-     * @return Boolean
+     *
+     * @param username
+     * @param password
+     * @return
      * @author xianxian
-     * @create:2019-10-29
+     * @create:2019-11-05
      * @Description
      * 用户登录
      */
-//    public List<TsmcpUser> Login(String user_name, String user_password);
-    public Map<Boolean,String> Login(String user_name, String user_password);
+    public JSONArray Login(String username, String password);
 
     public List<TsmcpUser> selectAll();
 

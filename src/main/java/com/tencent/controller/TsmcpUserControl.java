@@ -1,5 +1,6 @@
 package com.tencent.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.tencent.pojo.TsmcpUser;
 import com.tencent.service.ITsmcpUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @ClassName TsmcpUserControl.java
@@ -30,10 +30,11 @@ public class TsmcpUserControl {
     }
 
     @PostMapping("/Login")
-    public Map<Boolean,String> login(String username, String password){
-        Map<Boolean,String> tsmcpUser = iTsmcpUserService.Login(username,password);
-        return  tsmcpUser;
+    public JSONArray Login(String username, String password){
+        JSONArray tsmcpUsers = iTsmcpUserService.Login(username,password);
+        return tsmcpUsers;
     }
+
 
     /**
      * 判断用户名是否已存在
@@ -51,6 +52,8 @@ public class TsmcpUserControl {
 
     /**
      * 获取所有的工厂ID
+     * 返回前端的是数组格式
+     * 如 [1,2,3,4]
      * @return
      * @author xianxian
      * @create:2019-10-29
