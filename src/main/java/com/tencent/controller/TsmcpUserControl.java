@@ -29,6 +29,7 @@ public class TsmcpUserControl {
     private ITsmcpUserService iTsmcpUserService;
 
     @RequestMapping("/selectAll")
+    @ResponseBody
     public List<TsmcpUser> selectAll(){
         return iTsmcpUserService.selectAll();
     }
@@ -36,7 +37,7 @@ public class TsmcpUserControl {
     @RequestMapping("/")
     public String showHome() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.info("当前登陆用户：" + name);
+        //logger.info("当前登陆用户：" + name);
         return "index.html";
     }
 
@@ -59,7 +60,8 @@ public class TsmcpUserControl {
         return "如果你看见这句话，说明你有ROLE_USER角色";
     }
 
-    @PostMapping("/Login")
+    @RequestMapping("/Login")
+    @ResponseBody
     public JSONArray Login(String username, String password){
         JSONArray tsmcpUsers = iTsmcpUserService.Login(username,password);
         return tsmcpUsers;
@@ -74,7 +76,9 @@ public class TsmcpUserControl {
      * @create:2019-10-29
      * @Description
      */
-    @PostMapping("/isExistUsername")
+
+    @RequestMapping("/isExistUsername")
+    @ResponseBody
     public Boolean isExistUsername(String username){
         Boolean result = iTsmcpUserService.isExistUsername(username);
         return result;
@@ -89,7 +93,8 @@ public class TsmcpUserControl {
      * @create:2019-10-29
      * @Description
      */
-    @PostMapping("/getAllFactoryIds")
+    @RequestMapping ("/getAllFactoryIds")
+    @ResponseBody
     public List<Integer> getAllFactoryIds(){
         List<Integer> list = iTsmcpUserService.getAllFactoryIds();
         return list;
@@ -103,7 +108,8 @@ public class TsmcpUserControl {
      * @create:2019-10-29
      * @Description
      */
-    @PostMapping("/insertIntoTsmcpUser")
+    @RequestMapping ("/insertIntoTsmcpUser")
+    @ResponseBody
     public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser){
         Boolean result = iTsmcpUserService.insertIntoTsmcpUser(tsmcpUser);
         return result;

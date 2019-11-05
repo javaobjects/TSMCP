@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
         // 如果token表不存在，使用下面语句可以初始化该表；若存在，请注释掉这条语句，否则会报错。
-        tokenRepository.setCreateTableOnStartup(true);
+        //tokenRepository.setCreateTableOnStartup(true);
         return tokenRepository;
     }
 
@@ -55,7 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 如果有允许匿名的url，填在下面
-                //.antMatchers().permitAll()
+                .antMatchers("/isExistUsername").permitAll()
+                .antMatchers("/getAllFactoryIds").permitAll()
+                .antMatchers("/insertIntoTsmcpUser").permitAll()
+                .antMatchers("/Login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
@@ -81,6 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         // 设置拦截忽略文件夹，可以对静态资源放行
         web.ignoring()
-                .antMatchers("/css/**","/js/**","/assets/**","/font/**","/img/**");
+                .antMatchers("/css/**","/js/**","/assets/**"
+                        ,"/font/**","/img/**");
     }
 }
