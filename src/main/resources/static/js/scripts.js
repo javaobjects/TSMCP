@@ -2313,7 +2313,7 @@ try{
 
 //knob
 let page = location.pathname.split(".")[0].replace(/\//,"");
-if(page == "index"){
+if(page == "index" || page == ""){
     $(".knob").knob();
 }
 
