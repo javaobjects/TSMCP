@@ -2316,8 +2316,8 @@ let page = location.pathname.split(".")[0].replace(/\//,"");
 if(page == "index" || page == ""){
     $(".knob").knob();
 }
-
-
+//赋值页面的当前位置
+$("small").text($("title").text().split("-")[1]);
 
 
 
