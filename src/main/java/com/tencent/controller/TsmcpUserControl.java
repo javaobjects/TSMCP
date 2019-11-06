@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class TsmcpUserControl {
     @RequestMapping("/")
     public String showHome() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        //logger.info("当前登陆用户：" + name);
+        logger.info("当前登陆用户：" + name);
         return "index.html";
     }
 
@@ -69,6 +71,12 @@ public class TsmcpUserControl {
         return tsmcpUsers;
     }
 
+
+    //处理登录失败的请求
+    @RequestMapping("/login/error")
+    public void loginError(HttpServletRequest request, HttpServletResponse response) {
+
+    }
 
     /**
      * 判断用户名是否已存在
