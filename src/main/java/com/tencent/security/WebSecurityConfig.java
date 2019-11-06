@@ -82,6 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/getAllFactoryIds").permitAll()
                 .antMatchers("/insertIntoTsmcpUser").permitAll()
                 .antMatchers("/Login").permitAll()
+                .antMatchers("/selectAllPro").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
