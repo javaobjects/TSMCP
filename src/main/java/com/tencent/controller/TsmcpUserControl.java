@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -50,12 +52,6 @@ public class TsmcpUserControl {
         return "login.html";
     }
 
-    @RequestMapping("/admin")
-    @ResponseBody
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String printAdmin() {
-        return "如果你看见这句话，说明你有ROLE_ADMIN角色";
-    }
 
     @RequestMapping("/user")
     @ResponseBody
@@ -75,7 +71,14 @@ public class TsmcpUserControl {
     //处理登录失败的请求
     @RequestMapping("/login/error")
     public void loginError(HttpServletRequest request, HttpServletResponse response) {
-
+        response.setContentType("text/html;charset=utf-8");
+        AuthenticationException exception =
+                (AuthenticationException)request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+        try {
+            response.getWriter().write(exception.toString());
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -124,4 +127,30 @@ public class TsmcpUserControl {
         Boolean result = iTsmcpUserService.insertIntoTsmcpUser(tsmcpUser);
         return result;
     }
+
+    /**
+     * 测试用户权限接口
+     */
+    @RequestMapping("/admin")
+    @ResponseBody
+    @PreAuthorize("hasPermission('/admin','r')")
+    public String printAdminR() {
+        return "如果你看见这句话，说明你访问/admin路径具有r权限";
+    }
+
+    @RequestMapping("/admin/d")
+    @ResponseBody
+    @PreAuthorize("hasPermission('/admin','d')")
+    public String printAdminD() {
+        return "如果你看见这句话，说明你访问/admin路径具有D权限";
+    }
+
+
+    @RequestMapping("/admin/c")
+    @ResponseBody
+    @PreAuthorize("hasPermission('/admin','c')")
+    public String printAdminC() {
+        return "如果你看见这句话，说明你访问/admin路径具有c权限";
+    }
+
 }

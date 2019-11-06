@@ -36,4 +36,7 @@ public interface TsmcpUserRoleMapper {
     //通过id找权限
     TsmcpUserRole selectById(@Param("id") Integer id);
 
+    //通过name找
+    TsmcpUserRole selectByName(@Param("name") String name);
+
 }

@@ -1,6 +1,11 @@
 package com.tencent.pojo;
 
-public class TsmcpPermit {
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+
+public class TsmcpPermit implements Serializable {
+
     private Integer id;
 
     private Integer flag;
@@ -14,6 +19,41 @@ public class TsmcpPermit {
     private String permitDesc;
 
     private String permitPath;
+
+    private List permitPaths;
+
+    public TsmcpPermit(Integer id, Integer flag, Integer status, Integer parentId, String permitName, String permitDesc, String permitPath) {
+        this.id = id;
+        this.flag = flag;
+        this.status = status;
+        this.parentId = parentId;
+        this.permitName = permitName;
+        this.permitDesc = permitDesc;
+        this.permitPath = permitPath;
+    }
+
+    @Override
+    public String toString() {
+        return "TsmcpPermit{" +
+                "id=" + id +
+                ", flag=" + flag +
+                ", status=" + status +
+                ", parentId=" + parentId +
+                ", permitName='" + permitName + '\'' +
+                ", permitDesc='" + permitDesc + '\'' +
+                ", permitPath='" + permitPath + '\'' +
+                ", permitPaths=" + permitPaths +
+                '}';
+    }
+
+    //权限关系用","分隔开
+    public List getPermitPaths() {
+        return Arrays.asList(this.permitPath.trim().split(","));
+    }
+
+    public void setPermitPaths(List permitPaths) {
+        this.permitPaths = permitPaths;
+    }
 
     public Integer getId() {
         return id;

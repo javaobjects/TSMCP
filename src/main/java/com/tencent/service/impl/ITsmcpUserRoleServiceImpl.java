@@ -1,6 +1,7 @@
 package com.tencent.service.impl;
 
 import com.tencent.mapper.TsmcpUserRoleMapper;
+import com.tencent.pojo.TsmcpPermit;
 import com.tencent.pojo.TsmcpUserRole;
 import com.tencent.service.ITsmcpUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,10 @@ public class ITsmcpUserRoleServiceImpl implements ITsmcpUserRoleService {
     @Override
     public TsmcpUserRole selectById(Integer id) {
         return tsmcpUserRoleMapper.selectById(id);
+    }
+
+    @Override
+    public TsmcpUserRole selectByName(String name) {
+        return tsmcpUserRoleMapper.selectByName(name);
     }
 }

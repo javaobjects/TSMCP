@@ -31,4 +31,6 @@ public interface TsmcpPermitMapper {
     int updateByPrimaryKeySelective(TsmcpPermit record);
 
     int updateByPrimaryKey(TsmcpPermit record);
+
+    List<TsmcpPermit> listByRoleId(@Param("Id") Integer Id);
 }

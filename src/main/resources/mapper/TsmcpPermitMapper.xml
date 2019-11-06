@@ -240,5 +240,7 @@
       permit_path = #{permitPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
+  <select id="listByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM tsmcp_permit WHERE parent_id = #{Id}
+  </select>
 </mapper>

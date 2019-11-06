@@ -278,4 +278,8 @@
     SELECT * FROM tsmcp_user_role WHERE id = #{id}
   </select>
 
+  <select id="selectByName" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM tsmcp_user_role WHERE name = #{name}
+  </select>
+
 </mapper>
