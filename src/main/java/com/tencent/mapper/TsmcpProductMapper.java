@@ -1,9 +1,9 @@
 package com.tencent.mapper;
 
+import com.tencent.pojo.TsmcpProduct;
+import com.tencent.pojo.TsmcpProductExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import com.tencent.pojo.TsmcpProductExample;
-import com.tencent.pojo.TsmcpProduct;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,4 +34,6 @@ public interface TsmcpProductMapper {
     int updateByPrimaryKey(TsmcpProduct record);
 
     List<TsmcpProduct> selectAll();
+
+    List<TsmcpProduct> selectAll2();
 }
