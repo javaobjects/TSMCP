@@ -1345,7 +1345,11 @@ var App = function () {
         });
 
         var setColor = function (color) {
-            $('#style_color').attr("href", "css/style_" + color + ".css");
+            if(page == "index"){
+                $('#style_color').attr("href", "css/style_" + color + ".css");
+            }else {
+                $('#style_color').attr("href", "../css/style_" + color + ".css");
+            }
         }
 
     }
