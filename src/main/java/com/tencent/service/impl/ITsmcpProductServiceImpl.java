@@ -42,7 +42,7 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
 //        return jsonArray;
 
         map.put("key","value");
-        map.put("key2",tsmcpProducts);
+        map.put("data",tsmcpProducts);
         return map;
     }
 }

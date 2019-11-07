@@ -4710,7 +4710,8 @@
 			{
 				if ( DataTable.ext.sErrMode == 'alert' )
 				{
-					alert( sAlert );
+					// alert( sAlert );//源文件
+					console.error( sAlert );
 				}
 				else
 				{
