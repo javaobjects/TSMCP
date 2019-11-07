@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -26,7 +27,8 @@ public class TsmcpProductControl {
     //https://blog.csdn.net/qq_39455116/article/details/84329071
     //https://blog.csdn.net/evane1890/article/details/63262610
 
-    @RequestMapping("/selectAllPro")
+
+    @RequestMapping(value = "/selectAllPro", method = RequestMethod.POST)
     @ResponseBody
     public RcDetailResponse queryRcDetail(@RequestBody RcDetailRequest req) {
         //根据当前的数量，算出来要查询的页码，第一页开始从0，第二页是10，每页数量10，所以页码要+1
