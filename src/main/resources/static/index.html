@@ -320,7 +320,7 @@
 
                             <div class="widget-body">
 
-                                <div id="graph_4" class="chart"></div>
+                                <div id="donutChart" class="chart"></div>
 
                             </div>
 
@@ -334,7 +334,7 @@
                                 <h4><i class="icon-reorder"></i>Bar Chat</h4>
 
                                 <span class="tools">
-
+			
 							<a href="javascript:;" class="icon-chevron-down"></a>
 
                             <a href="javascript:;" class="icon-remove"></a>
@@ -345,31 +345,7 @@
 
                             <div class="widget-body">
 
-                                <div id="chart_5" style="height:350px;"></div>
-
-                                <div class="btn-toolbar">
-
-                                    <div class="btn-group stackControls">
-
-                                        <input type="button" class="btn btn-info" value="With stacking" />
-
-                                        <input type="button" class="btn btn-danger" value="Without stacking" />
-
-                                    </div>
-
-                                    <div class="space5"></div>
-
-                                    <div class="btn-group graphControls">
-
-                                        <input type="button" class="btn" value="Bars" />
-
-                                        <input type="button" class="btn" value="Lines" />
-
-                                        <input type="button" class="btn" value="Lines with steps" />
-
-                                    </div>
-
-                                </div>
+                                <div id="barChart" class="chart"></div>
 
                             </div>
 
@@ -443,6 +419,7 @@
 
 
 
+<script src="js/echarts.min.js"></script>
 <script src="js/scripts.js"></script>
 <script>
     jQuery(document).ready(function() {
