@@ -11,14 +11,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -48,6 +46,15 @@ public class TsmcpUserControl {
         logger.info("当前登陆用户：" + name);
         return "index.html";
     }
+
+    @GetMapping("/indextest")
+    public String index(Principal principal) {
+        //如果未登录，principal为null
+        String name3 = principal.getName();
+        System.out.println(name3);
+        return "index.html";
+    }
+
 
     @RequestMapping("/login")
     public String showLogin() {
