@@ -24,6 +24,10 @@
 
 6. Xshell 6
 
+7. Postman
+
+8. RedisDesktopManager
+
 #### 版本控制工具
 
 1. git
@@ -36,7 +40,11 @@
 
 2. mybatis逆向工程
 
-3. springboot + springmvc + mybatis
+3. springboot + mybatis
 
-4. [Lambda](https://www.runoob.com/java/java8-lambda-expressions.html)
+4. spring security权限控制
+
+5. redis
+
+6. [Lambda](https://www.runoob.com/java/java8-lambda-expressions.html)
 
