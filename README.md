@@ -48,15 +48,20 @@
 
 6. [Lambda](https://www.runoob.com/java/java8-lambda-expressions.html)
 
-常见问题:
+#### 常见问题
 
-运行时redis错误：[redis]Connection failure occurred. Restarting subscription task after 5000 ms
+##### 运行时redis错误
+
+：[redis]Connection failure occurred. Restarting subscription task after 5000 ms
   1.查看SpringBoot配置文件确认本地redis配置是否正确
+  
   2.确保redis正确运行在后台
+  
   3.缓存已经超出redis服务所规定的订阅缓存限制值，查看redis.conf配置文件:redis.windows.conf。
-    这一句：client-output-buffer-limit pubsub 32mb 8mb 60    
-    Redis订阅客户端订阅buffer超过32M或持续60秒超过8M,订阅立即被关闭！解决改问题把限制值调大即可解决！
+    这一句：client-output-buffer-limit pubsub 32mb 8mb 60
+    Redis订阅客户端订阅buffer超过32M或持续60秒超过8M,订阅立即被关闭！解决改问题把限制值调大即可解	决！
     这里设置为：client-output-buffer-limit pubsub 256mb 64mb 60
+  
   4.用 redis-server.exe redis.windows.conf 命令启动redis  指定配文件（如果关掉，会出现问题）
 
 
