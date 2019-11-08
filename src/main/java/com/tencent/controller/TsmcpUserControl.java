@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,12 +48,15 @@ public class TsmcpUserControl {
         return "index.html";
     }
 
-    @GetMapping("/indextest")
-    public String index(Principal principal) {
+    @RequestMapping(value = "/getName",method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> index(Principal principal) {
         //如果未登录，principal为null
         String name3 = principal.getName();
+        List<String> list = new ArrayList<>();
+        list.add(name3);
         System.out.println(name3);
-        return "index.html";
+        return list;
     }
 
 

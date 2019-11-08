@@ -54,7 +54,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         System.out.println("验证码：" + validateCode + "用户输入：" + inputVerify);
 
-        return validateCode.equals(inputVerify);
+        //注解了验证码功能
+        //return validateCode.equals(inputVerify);
+        return true;
     }
 
     @Override
