@@ -6,17 +6,17 @@ import com.tencent.service.ITsmcpUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -47,11 +47,26 @@ public class TsmcpUserControl {
         return "index.html";
     }
 
+    @GetMapping("/indextest")
+    public String index(Principal principal) {
+        //如果未登录，principal为null
+        String name3 = principal.getName();
+        System.out.println(name3);
+        return "index.html";
+    }
+
+
     @RequestMapping("/login")
     public String showLogin() {
         return "login.html";
     }
 
+    @RequestMapping("/login/invalid")
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ResponseBody
+    public String invalid() {
+        return "Session 已过期，请重新登录";
+    }
 
     @RequestMapping("/user")
     @ResponseBody
