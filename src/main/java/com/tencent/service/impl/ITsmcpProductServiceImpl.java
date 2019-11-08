@@ -27,8 +27,17 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
     public Map<String ,Object> selectAll2() {
         Map<String,Object> map = new HashMap<>();
         List<TsmcpProduct> tsmcpProducts = tsmcpProductMapper.selectAll2();
+        /**
+         * 此处得空拼接
+         */
+//        for(int i = 0;i < tsmcpProducts.size();i++){
+//            if(tsmcpProducts.get(i).getTsmcpFactory().getFactoryName()){
+//
+//            }
+//        }
         map.put("key","value");
         map.put("data",tsmcpProducts);
+        System.out.println(tsmcpProducts.get(0).getTsmcpFactory());
         return map;
     }
 }

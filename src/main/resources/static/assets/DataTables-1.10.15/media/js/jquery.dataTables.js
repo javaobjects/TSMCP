@@ -6473,7 +6473,8 @@
 			}
 	
 			if ( type == 'alert' ) {
-				alert( msg );
+				// alert( msg );
+				console.error(msg);
 			}
 			else if ( type == 'throw' ) {
 				throw new Error(msg);

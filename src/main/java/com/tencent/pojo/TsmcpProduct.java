@@ -23,6 +23,16 @@ public class TsmcpProduct {
 
     private Integer factoryId;
 
+    private TsmcpFactory tsmcpFactory;
+
+    public TsmcpFactory getTsmcpFactory() {
+        return tsmcpFactory;
+    }
+
+    public void setTsmcpFactory(TsmcpFactory tsmcpFactory) {
+        this.tsmcpFactory = tsmcpFactory;
+    }
+
     public Integer getId() {
         return id;
     }
