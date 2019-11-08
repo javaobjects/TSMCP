@@ -4,10 +4,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpFactoryExample;
 import com.tencent.pojo.TsmcpFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface TsmcpFactoryMapper {
     long countByExample(TsmcpFactoryExample example);
 

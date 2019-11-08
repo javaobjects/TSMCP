@@ -4,11 +4,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpDailyWorkExample;
 import com.tencent.pojo.TsmcpDailyWork;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface TsmcpDailyWorkMapper {
     long countByExample(TsmcpDailyWorkExample example);
 
