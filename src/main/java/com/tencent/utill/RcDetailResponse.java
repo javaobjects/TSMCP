@@ -8,7 +8,7 @@ public class RcDetailResponse {
     //    draw  、 recordsTotal、recordsFiltered 、error、 data
     //    recordsTotal 总共多少，一般是数据库有多少，就写多少
     //    recordsFiltered  过滤后的数据，我这里和recordsTotal是一样的
-    //    error  可以选填
+    //    error 可以选填
     //    data  传给datatable的数据，当然名字可以换，换名字之后，要指定数据源
     //    比如换成  dataJson 那么要添加一个，下面有详细使用
     //	 "dataSrc": "dataJson",

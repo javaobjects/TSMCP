@@ -34,6 +34,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationProvider customAuthenticationProvider;
 
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Autowired
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository(){
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
@@ -87,9 +93,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 设置登陆页
                 .formLogin().loginPage("/login")
                 // 设置登陆成功页
-                .failureUrl("/login/error")
+                .successHandler(customAuthenticationSuccessHandler)
+                .failureHandler(customAuthenticationFailureHandler)
+                //.failureUrl("/login/error")
                 .authenticationDetailsSource(authenticationDetailsSource)
-                .defaultSuccessUrl("/").permitAll()
+                //.defaultSuccessUrl("/")
+                .permitAll()
                 // 自定义登陆用户名和密码参数，默认为username和password
                 //.usernameParameter("username")
                 //.passwordParameter("password")
@@ -99,7 +108,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .tokenRepository(persistentTokenRepository())
                 // 有效时间：单位s
                 .tokenValiditySeconds(60)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .and()
+                .sessionManagement()
+                .invalidSessionUrl("/login/invalid")
+                .maximumSessions(1)
+                // 当达到最大值时，是否保留已经登录的用户
+                .maxSessionsPreventsLogin(false)
+                // 当达到最大值时，旧用户被踢出后的操作
+                .expiredSessionStrategy(new CustomExpiredSessionStrategy());
 
         // 关闭CSRF跨域
         http.csrf().disable();

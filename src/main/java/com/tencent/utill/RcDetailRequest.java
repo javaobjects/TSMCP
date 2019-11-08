@@ -14,6 +14,23 @@ public class RcDetailRequest {
     private int length;
     private String search;
 
+    public RcDetailRequest(int draw, int start, int length, String search) {
+        this.draw = draw;
+        this.start = start;
+        this.length = length;
+        this.search = search;
+    }
+
+    @Override
+    public String toString() {
+        return "RcDetailRequest{" +
+                "draw=" + draw +
+                ", start=" + start +
+                ", length=" + length +
+                ", search='" + search + '\'' +
+                '}';
+    }
+
     public int getDraw() {
         return draw;
     }
