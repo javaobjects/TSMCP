@@ -4,10 +4,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpOrderTrackExample;
 import com.tencent.pojo.TsmcpOrderTrack;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface TsmcpOrderTrackMapper {
     long countByExample(TsmcpOrderTrackExample example);
 

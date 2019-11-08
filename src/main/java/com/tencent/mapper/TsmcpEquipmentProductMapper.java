@@ -2,10 +2,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpEquipmentProductExample;
 import com.tencent.pojo.TsmcpEquipmentProduct;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface TsmcpEquipmentProductMapper {
     long countByExample(TsmcpEquipmentProductExample example);
 
