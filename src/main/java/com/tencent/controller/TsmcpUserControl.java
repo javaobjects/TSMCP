@@ -100,6 +100,8 @@ public class TsmcpUserControl {
         }
     }
 
+
+
     /**
      * 判断用户名是否已存在
      * @param username
@@ -108,14 +110,12 @@ public class TsmcpUserControl {
      * @create:2019-10-29
      * @Description
      */
-
     @RequestMapping("/isExistUsername")
     @ResponseBody
     public Boolean isExistUsername(String username){
         Boolean result = iTsmcpUserService.isExistUsername(username);
         return result;
     }
-
     /**
      * 获取所有的工厂ID
      * 返回前端的是数组格式
