@@ -220,6 +220,8 @@
                                     <th class="hidden-phone">产品图片</th>
                                     <th class="hidden-phone">产品名称</th>
                                     <th class="hidden-phone">工厂名称</th>
+                                    <th class="hidden-phone">创建时间</th>
+                                    <th class="hidden-phone">更新时间</th>
                                     <th class="hidden-phone">操作</th>
                                 </tr>
                                 </thead>
@@ -327,10 +329,16 @@
                   data:"tsmcpFactory.factoryName"
                 },
                 {
+                    data:"createTime"
+                },
+                {
+                    data:"updateTime"
+                },
+                {
                     data:null,
                     render:function (data,type,row,meta) {
-                        return '<button class="btn mini purple" style="margin-right: 15px;"><i class="icon-edit"></i> 编辑</button>' +
-                            '<button class="btn mini black" style="margin-right: 15px;"><i class="icon-trash"></i> 删除</button>' +
+                        return '<button class="btn mini purple" style="margin-right: 5px;"><i class="icon-edit"></i> 编辑</button>' +
+                            '<button class="btn mini black" style="margin-right: 5px;"><i class="icon-trash"></i> 删除</button>' +
                             '<button class="btn mini black"><i class="icon-plus"></i> 添加</button>';
                     }
                 }
