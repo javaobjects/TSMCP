@@ -40,6 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
+    @Autowired
+    private CustomLogoutSuccessHandler logoutSuccessHandler;
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository(){
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
@@ -79,6 +82,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.logout()
+                .logoutUrl("/signout")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessHandler(logoutSuccessHandler);
         http.authorizeRequests()
                 // 如果有允许匿名的url，填在下面
                 .antMatchers("/getVerifyCode").permitAll()
