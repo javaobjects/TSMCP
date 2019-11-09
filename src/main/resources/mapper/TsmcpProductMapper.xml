@@ -147,6 +147,8 @@
       #{productNum,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productImgUrl,jdbcType=VARCHAR}, 
       #{factoryId,jdbcType=INTEGER})
   </insert>
+
+  <!--插入产品，拼接语句-->
   <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpProduct">
     insert into tsmcp_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
