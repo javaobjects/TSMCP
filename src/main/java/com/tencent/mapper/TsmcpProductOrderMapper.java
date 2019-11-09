@@ -1,5 +1,6 @@
 package com.tencent.mapper;
 
+import com.tencent.pojo.TsmcpProductOrderSum;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import com.tencent.pojo.TsmcpProductOrderExample;
@@ -33,5 +34,5 @@ public interface TsmcpProductOrderMapper {
 
     int updateByPrimaryKey(TsmcpProductOrder record);
 
-    List<TsmcpProductOrder> selectOrderStatusSum();
+    List<TsmcpProductOrderSum> selectOrderStatusSum();
 }

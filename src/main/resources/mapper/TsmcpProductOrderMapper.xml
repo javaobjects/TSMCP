@@ -350,15 +350,15 @@
       factory_yield = #{factoryYield,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOrderStatusSum" resultMap="BaseResultMap">
-    select order_status,count(order_status) 待接单数 from tsmcp_product_order where order_status = 10 and flag <> 0
+  <select id="selectOrderStatusSum" resultType="com.tencent.pojo.TsmcpProductOrderSum">
+    select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 10 and flag &lt;&gt; 0
     union
-    select order_status,count(order_status) 生产中数 from tsmcp_product_order where order_status = 40 and flag <> 0
+    select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 40 and flag &lt;&gt; 0
     union
-    select order_status,count(order_status) 已接单数 from tsmcp_product_order where order_status = 20 and flag <> 0
+    select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 20 and flag &lt;&gt; 0
     union
-    select order_status,count(order_status) 已排产数 from tsmcp_product_order where order_status = 30 and flag <> 0
+    select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 30 and flag &lt;&gt; 0
     union
-    select order_status,count(order_status) 已完成数 from tsmcp_product_order where order_status = 50 and flag <> 0
+    select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 50 and flag &lt;&gt; 0
   </select>
 </mapper>

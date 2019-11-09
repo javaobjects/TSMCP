@@ -402,25 +402,38 @@
 
 
 <script src="assets/jquery-knob/js/jquery.knob.js"></script>
-
-
-
-
 <script src="js/echarts.min.js"></script>
 <script src="js/scripts.js"></script>
 <script>
-
     jQuery(document).ready(function() {
         // initiate layout and plugins
         // App.setMainPage(true);
         App.init();
     });
 
+    var statusNum10=null;
+    var statusNum40=null;
+    var statusNum20=null;
+    var statusNum30=null;
+    var statusNum50=null;
+    $.ajax({
+    type:"get",
+    url:"selectOrderSum",
+    dataType:"json",
+    async:false,
+    success:function(tsmcpProductOrderSumList){
+        statusNum10=tsmcpProductOrderSumList[0].orderStatusSum;
+        statusNum40=tsmcpProductOrderSumList[1].orderStatusSum;
+        statusNum20=tsmcpProductOrderSumList[1].orderStatusSum;
+        statusNum30=tsmcpProductOrderSumList[1].orderStatusSum;
+        statusNum50=tsmcpProductOrderSumList[1].orderStatusSum;
+    }
+    });
+
     //首页饼状图表
     // 基于准备好的div，初始化echarts实例
     var donutChart = echarts.init(document.getElementById('donutChart'));
     // 指定图表的配置项和数据
-
 
     option = {
         tooltip: {
@@ -458,11 +471,11 @@
                     }
                 },
                 data:[
-                    {value:2, name:'待接单'},
-                    {value:2, name:'生产中'},
-                    {value:2, name:'已接单'},
-                    {value:1, name:'已排产'},
-                    {value:8, name:'已完成'}
+                    {value:statusNum10, name:'待接单'},
+                    {value:statusNum40, name:'生产中'},
+                    {value:statusNum20, name:'已接单'},
+                    {value:statusNum30, name:'已排产'},
+                    {value:statusNum50, name:'已完成'}
                 ]
             }
         ]
@@ -528,6 +541,7 @@
     });
 
 </script>
+
 <!-- END JAVASCRIPTS -->
 </body>
 </html>
