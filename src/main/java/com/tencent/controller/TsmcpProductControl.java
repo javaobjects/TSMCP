@@ -84,4 +84,20 @@ public class TsmcpProductControl {
         Boolean result = iTsmcpProductService.deleteProductByProductId(productId);
         return result;
     }
+
+    /**
+     *
+     * @param tsmcpProduct
+     * @return
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+     * 更新产品
+     */
+    @RequestMapping("/updateProduct")
+    @ResponseBody
+    public Boolean updateProduct(TsmcpProduct tsmcpProduct){
+        Boolean result = iTsmcpProductService.updateProduct(tsmcpProduct);
+        return  result;
+    }
 }

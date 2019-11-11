@@ -69,4 +69,19 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
         Boolean result = tsmcpProductMapper.deleteProductByProductId(productId);
         return result;
     }
+
+    /**
+     *
+     * @param tsmcpProduct
+     * @return
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+     * 更新产品
+     */
+    @Override
+    public Boolean updateProduct(TsmcpProduct tsmcpProduct) {
+        Boolean resutlt = tsmcpProductMapper.updateProduct(tsmcpProduct);
+        return resutlt;
+    }
 }

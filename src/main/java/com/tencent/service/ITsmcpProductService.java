@@ -30,4 +30,14 @@ public interface ITsmcpProductService {
      * 根据产品id删除产品
      */
     Boolean deleteProductByProductId(Integer productId);
+
+    /**
+     * @param tsmcpProduct
+     * @return
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+     * 更新产品
+     */
+    Boolean updateProduct(TsmcpProduct tsmcpProduct);
 }
