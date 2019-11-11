@@ -47,7 +47,7 @@ public interface TsmcpProductMapper {
      * @create:2019-11-08
      * @Description
      */
-    Boolean addProduct(TsmcpProduct tsmcpProduct);
+    Integer addProduct(TsmcpProduct tsmcpProduct);
 
     /**
      * @param productId
@@ -57,7 +57,7 @@ public interface TsmcpProductMapper {
      * @Description
      * 根据产品id删除产品
      */
-    Boolean deleteProductByProductId(Integer productId);
+    Integer deleteProductByProductId(Integer productId);
 
     /**
      *
@@ -68,5 +68,5 @@ public interface TsmcpProductMapper {
      * @Description
      * 更新产品
      */
-    Boolean updateProduct(TsmcpProduct tsmcpProduct);
+    Integer updateProduct(TsmcpProduct tsmcpProduct);
 }

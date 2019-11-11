@@ -16,6 +16,7 @@
     <link href="../css/style_responsive.css" rel="stylesheet" />
     <link href="../css/style_default.css" rel="stylesheet" id="style_color" />
     <link href="../assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../assets/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="../assets/uniform/css/uniform.default.css" />
 </head>
 <body class="fixed-top">
@@ -260,8 +261,8 @@
             </div>
             <div class="modal-body product_Modal_body"></div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary product_Modal_false" data-dismiss="modal">取消</button>
                 <button type="button" class="btn btn-default product_Modal_enter">确定</button>
-                <button type="button" class="btn btn-primary product_Modal_false">取消</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -279,6 +280,7 @@
 <![endif]-->
 <script type="text/javascript" src="../assets/uniform/jquery.uniform.min.js"></script>
 <script src="../assets/DataTables-1.10.15/media/js/jquery.dataTables.js"></script>
+<script src="../assets/gritter/js/jquery.gritter.js"></script>
 <!--<script type="text/javascript" src="../assets/data-tables/DT_bootstrap.js"></script>-->
 <script src="../js/scripts.js"></script>
 <script>
@@ -357,9 +359,9 @@
                 {
                     data:null,
                     render:function (data,type,row,meta) {
-                        return '<button class="btn mini purple btn_edit" style="margin-right: 5px;"><i class="icon-edit"></i> 编辑</button>' +
-                            '<button class="btn mini black btn_delete" style="margin-right: 5px;"><i class="icon-trash"></i> 删除</button>' +
-                            '<button class="btn mini black btn_add"><i class="icon-plus"></i> 添加</button>';
+                        return '<button class="btn mini black btn_add" style="margin-right: 5px;"><i class="icon-plus"></i> 添加</button>' +
+                            '<button class="btn mini purple btn_edit" style="margin-right: 5px;"><i class="icon-edit"></i> 编辑</button>' +
+                            '<button class="btn mini black btn_delete"><i class="icon-trash"></i> 删除</button>';
                     },
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
                         $(cell).children("button").click(function () {
@@ -369,12 +371,16 @@
                             if($(this).hasClass("btn_delete")){
                                 console.info("btn_delete");
                                 /**
-                                 * 标题 product_Modal_Label
-                                 * 主体 product_Modal_body
-                                 * 确定 product_Modal_enter
-                                 * 取消 product_Modal_false
+                                 * 标题 #product_Modal_Label
+                                 * 主体 .product_Modal_body
+                                 * 确定 .product_Modal_enter
+                                 * 取消 .product_Modal_false
                                  */
-                                $('#product_Modal').modal('show')
+                                $("#product_Modal_Label").text("确定删除");
+                                $(".product_Modal_body").text("");
+                                mes.btn = "btn_delete";
+                                mes.data = rowData;
+                                $('#product_Modal').modal('show');
                             }
                             if($(this).hasClass("btn_add")){
                                 console.info("btn_add");
@@ -386,6 +392,34 @@
             rowCallback: function(row,data) {}
         });
 
+        let mes = {};
+        $(".product_Modal_enter").click(function () {
+            console.info(mes.btn);
+            console.info(mes.data);
+            $.ajax({
+                url:"/deleteProductByProductId",
+                type:"POST",
+                data:{
+                    productId:mes.data.id
+                },
+                dataType:"json",
+                beforeSend:function (XMLHttpRequest) {},
+                success:function (data,textStatus,XMLHttpRequest) {
+                    console.info(data);
+                },
+                error:function (XMLHttpRequest,textStatus,errorThorwn) {
+                    console.error(XMLHttpRequest);
+                    console.error(textStatus);
+                    console.error(errorThorwn);
+                    $('#product_Modal').modal('hide');
+                    $.gritter.add({
+                        title: '',
+                        text: '删除失败，请稍后再试。。。。'
+                    });
+                },
+                complete:function (XMLHttpRequest,textStatus) {}
+            })
+        });
     });
 </script>
 <!-- END JAVASCRIPTS -->

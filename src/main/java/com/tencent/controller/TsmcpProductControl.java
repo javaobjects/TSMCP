@@ -6,6 +6,7 @@ import com.tencent.pojo.TsmcpProduct;
 import com.tencent.service.ITsmcpProductService;
 import com.tencent.utill.RcDetailRequest;
 import com.tencent.utill.RcDetailResponse;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +83,7 @@ public class TsmcpProductControl {
     @ResponseBody
     public Boolean deleteProductByProductId(Integer productId){
         Boolean result = iTsmcpProductService.deleteProductByProductId(productId);
+        LoggerFactory.getLogger(getClass()).info("control-delete:" + result);
         return result;
     }
 

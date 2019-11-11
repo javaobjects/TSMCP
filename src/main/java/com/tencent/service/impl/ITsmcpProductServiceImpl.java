@@ -3,6 +3,7 @@ package com.tencent.service.impl;
 import com.tencent.mapper.TsmcpProductMapper;
 import com.tencent.pojo.TsmcpProduct;
 import com.tencent.service.ITsmcpProductService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,8 +53,12 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
      */
     @Override
     public Boolean addProduct(TsmcpProduct tsmcpProduct) {
-        Boolean result = tsmcpProductMapper.addProduct(tsmcpProduct);
-        return result;
+        Integer result = tsmcpProductMapper.addProduct(tsmcpProduct);
+        if(result == 1){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -66,8 +71,14 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
      */
     @Override
     public Boolean deleteProductByProductId(Integer productId) {
-        Boolean result = tsmcpProductMapper.deleteProductByProductId(productId);
-        return result;
+        Integer result = tsmcpProductMapper.deleteProductByProductId(productId);
+        LoggerFactory.getLogger(getClass()).info("delete:" + result);
+        if(result == 1){
+            LoggerFactory.getLogger(getClass()).info("1");
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -81,7 +92,11 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
      */
     @Override
     public Boolean updateProduct(TsmcpProduct tsmcpProduct) {
-        Boolean resutlt = tsmcpProductMapper.updateProduct(tsmcpProduct);
-        return resutlt;
+        Integer resutlt = tsmcpProductMapper.updateProduct(tsmcpProduct);
+        if(resutlt == 1){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
