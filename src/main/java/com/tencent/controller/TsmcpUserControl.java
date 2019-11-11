@@ -147,6 +147,13 @@ public class TsmcpUserControl {
         return result;
     }
 
+
+    //跳转到注册页面接口
+    @RequestMapping(value = "/showregister",method = RequestMethod.GET)
+    public String showRegister(){
+        return "pages/register.html";
+    }
+
     /**
      * 测试用户权限接口
      */

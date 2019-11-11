@@ -370,6 +370,7 @@
   </update>
 
 
+  <!-- 修改后的用户注册语句,修改创建时间固定为系统当前时间 -->
 
   <insert id="insertIntoTsmcpUser" parameterType="com.tencent.pojo.TsmcpUser">
     insert into tsmcp_user
@@ -380,9 +381,7 @@
       <if test="flag != null">
         flag,
       </if>
-      <if test="createTime != null">
         create_time,
-      </if>
       <if test="createUserid != null">
         create_userid,
       </if>
@@ -392,9 +391,7 @@
       <if test="updateUserid != null">
         update_userid,
       </if>
-      <if test="userStatus != null">
         user_status,
-      </if>
       <if test="userName != null">
         user_name,
       </if>
@@ -413,9 +410,6 @@
       <if test="userEmail != null">
         user_email,
       </if>
-      <if test="roleId != null">
-        role_id,
-      </if>
       <if test="factoryId != null">
         factory_id,
       </if>
@@ -430,9 +424,7 @@
       <if test="flag != null">
         #{flag,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
+        now(),
       <if test="createUserid != null">
         #{createUserid,jdbcType=INTEGER},
       </if>
@@ -442,9 +434,7 @@
       <if test="updateUserid != null">
         #{updateUserid,jdbcType=INTEGER},
       </if>
-      <if test="userStatus != null">
-        #{userStatus,jdbcType=INTEGER},
-      </if>
+        1,
       <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
@@ -463,9 +453,6 @@
       <if test="userEmail != null">
         #{userEmail,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=INTEGER},
-      </if>
       <if test="factoryId != null">
         #{factoryId,jdbcType=INTEGER},
       </if>
@@ -474,7 +461,6 @@
       </if>
     </trim>
   </insert>
-
   <!--
      * @author xianxian
      * @create:2019-10-29
