@@ -272,6 +272,7 @@
         /**
          * 1. https://www.cnblogs.com/wenhainan/p/10446512.html
          * 2. https://www.cnblogs.com/xiashengwang/p/8087181.html
+         * 3. https://www.cnblogs.com/GaiaBing/p/9317702.html
          */
 
 
@@ -307,7 +308,7 @@
                 dataSrc: "data",
                 type: "POST",
             },
-            "columns": [
+            columns: [
                 {
                     data: "id"
                 },
@@ -337,14 +338,27 @@
                 {
                     data:null,
                     render:function (data,type,row,meta) {
-                        return '<button class="btn mini purple" style="margin-right: 5px;"><i class="icon-edit"></i> 编辑</button>' +
-                            '<button class="btn mini black" style="margin-right: 5px;"><i class="icon-trash"></i> 删除</button>' +
-                            '<button class="btn mini black"><i class="icon-plus"></i> 添加</button>';
+                        return '<button class="btn mini purple btn_edit" style="margin-right: 5px;"><i class="icon-edit"></i> 编辑</button>' +
+                            '<button class="btn mini black btn_delete" style="margin-right: 5px;"><i class="icon-trash"></i> 删除</button>' +
+                            '<button class="btn mini black btn_add"><i class="icon-plus"></i> 添加</button>';
+                    },
+                    createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
+                        $(cell).children("button").click(function () {
+                           if($(this).hasClass("btn_edit")){
+                               console.info("btn_edit");
+                           }
+                            if($(this).hasClass("btn_delete")){
+                                console.info("btn_delete");
+                            }
+                            if($(this).hasClass("btn_add")){
+                                console.info("btn_add");
+                            }
+                        });
                     }
                 }
-            ]
+            ],
+            rowCallback: function(row,data) {}
         });
-
 
     });
 </script>
