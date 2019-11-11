@@ -520,25 +520,14 @@
                 name:'订单数量',
                 type:'bar',
                 barWidth: '60%',
-                data:[10, 52, 200, 334, 410, 330, 220, 410, 330, 220 , 12, 12]
+                data:[5, 5, 4, 3, 4, 3, 2, 4, 3, 2 , 1, 1]
             }
         ]
     };
     // 使用刚指定的配置项和数据显示图表。
     barChart.setOption(option);
 
-    //发起请求获取用户名
-    $.ajax({
-        type: 'GET',
-        url: '/getName',
-        dataType: "json",
-        success : function(data){
-            $(".username").text(data);
-        },
-        error : function(mes){
-            console.log("error:"+mes);
-        }
-    });
+
 
 </script>
 

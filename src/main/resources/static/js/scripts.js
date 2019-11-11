@@ -2321,6 +2321,22 @@ if(page == "index" || page == ""){
     $(".knob").knob();
 }
 
+if(page != "login" || page != ""){
+    //发起请求获取用户名
+    $.ajax({
+        type: 'GET',
+        url: '/getName',
+        dataType: "json",
+        success : function(data){
+            $(".username").text(data);
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
+}
+
+
 //赋值页面的当前位置
 $("small").text($("title").text().split("-")[1]);
 

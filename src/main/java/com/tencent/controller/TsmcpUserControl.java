@@ -55,7 +55,7 @@ public class TsmcpUserControl {
         String name3 = principal.getName();
         List<String> list = new ArrayList<>();
         list.add(name3);
-        System.out.println(name3);
+        //System.out.println(name3);
         return list;
     }
 
