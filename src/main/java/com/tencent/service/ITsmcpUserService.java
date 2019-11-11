@@ -61,4 +61,6 @@ public interface ITsmcpUserService {
 
     public TsmcpUser selectByName(String name);
 
+    public Integer selectNewUser();
+
 }

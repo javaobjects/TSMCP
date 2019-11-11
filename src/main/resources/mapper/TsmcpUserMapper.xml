@@ -369,9 +369,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <!-- 查询7天内的新用户数量 -->
+  <select id="selectNewUser" resultType="java.lang.Integer">
+    SELECT count(1) FROM tsmcp_user where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(create_time)
+  </select>
 
   <!-- 修改后的用户注册语句,修改创建时间固定为系统当前时间 -->
-
   <insert id="insertIntoTsmcpUser" parameterType="com.tencent.pojo.TsmcpUser">
     insert into tsmcp_user
     <trim prefix="(" suffix=")" suffixOverrides=",">

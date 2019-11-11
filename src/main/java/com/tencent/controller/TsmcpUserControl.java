@@ -59,6 +59,12 @@ public class TsmcpUserControl {
         return list;
     }
 
+    @RequestMapping(value = "/getNewUser",method = RequestMethod.GET)
+    @ResponseBody
+    public Integer selectNewUser(){
+        return iTsmcpUserService.selectNewUser();
+    }
+
 
     @RequestMapping("/login")
     public String showLogin() {
@@ -99,7 +105,6 @@ public class TsmcpUserControl {
             e.printStackTrace();
         }
     }
-
 
 
     /**
@@ -146,6 +151,7 @@ public class TsmcpUserControl {
         Boolean result = iTsmcpUserService.insertIntoTsmcpUser(tsmcpUser);
         return result;
     }
+
 
 
     //跳转到注册页面接口

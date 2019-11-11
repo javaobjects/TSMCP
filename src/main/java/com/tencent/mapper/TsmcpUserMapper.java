@@ -58,4 +58,7 @@ public interface TsmcpUserMapper {
     public List<Integer> getAllFactoryIds();
 
     public Integer insertIntoTsmcpUser(TsmcpUser tsmcpUser);
+
+    //查询7天内的新用户，用于图形界面
+    public Integer selectNewUser();
 }

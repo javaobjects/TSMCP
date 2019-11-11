@@ -94,6 +94,7 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     }
 
 
+
     @Override
     public TsmcpUser selectById(Integer id) {
         return tsmcpUserMapper.selectById(id);
@@ -102,6 +103,12 @@ public class ITsmcpUserServiceImpl implements ITsmcpUserService , Serializable {
     @Override
     public TsmcpUser selectByName(String name) {
         return tsmcpUserMapper.selectByName(name);
+    }
+
+    @Override
+    public Integer selectNewUser() {
+        Integer sum = tsmcpUserMapper.selectNewUser();
+        return sum;
     }
 
 }

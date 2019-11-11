@@ -222,7 +222,7 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="35" data-fgColor="#4CC5CD" data-bgColor="#ddd">
                             </div>
                             <div class="details">
-                                <div class="number">+33</div>
+                                <div class="number" id="newUser">33</div>
                                 <div class="title">新用户</div>
                             </div>
                         </div>
@@ -250,7 +250,7 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="30" data-fgColor="#a8c77b" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">+320</div>
+                                <div class="number">320</div>
                                 <div class="title">新订单</div>
                             </div>
                         </div>
@@ -527,6 +527,18 @@
     // 使用刚指定的配置项和数据显示图表。
     barChart.setOption(option);
 
+    //发起请求获取7天内的新用户
+    $.ajax({
+        type: 'GET',
+        url: '/getNewUser',
+        dataType: "json",
+        success : function(data){
+            $("#newUser").text("+"+data);
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
 
 
 </script>
