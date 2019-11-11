@@ -137,6 +137,26 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
+
+  <!--
+     * @author xianxian
+     * @create:2019-11-08
+     * @Description
+     用户插入数据
+  -->
+
+  <insert id="addProduct" parameterType="com.tencent.pojo.TsmcpProduct">
+    insert into tsmcp_product (id, flag, create_time,
+      create_userid, update_time, update_userid,
+      product_num, product_name, product_img_url,
+      factory_id)
+    values (#{id,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{createUserid,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserid,jdbcType=INTEGER},
+      #{productNum,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productImgUrl,jdbcType=VARCHAR},
+      #{factoryId,jdbcType=INTEGER})
+  </insert>
+
   <insert id="insert" parameterType="com.tencent.pojo.TsmcpProduct">
     insert into tsmcp_product (id, flag, create_time, 
       create_userid, update_time, update_userid, 

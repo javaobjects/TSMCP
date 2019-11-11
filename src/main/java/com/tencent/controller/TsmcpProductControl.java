@@ -54,4 +54,19 @@ public class TsmcpProductControl {
         Map<String ,Object>  map = iTsmcpProductService.selectAll2();
       return map;
     }
+
+    /**
+     *
+     * @param tsmcpProduct
+     * @return
+     * @author xianxian
+     * @create:2019-11-08
+     * @Description
+     */
+    @RequestMapping("/addProduct")
+    @ResponseBody
+    public Boolean addProduct(TsmcpProduct tsmcpProduct){
+        Boolean result = iTsmcpProductService.addProduct(tsmcpProduct);
+        return result;
+    }
 }

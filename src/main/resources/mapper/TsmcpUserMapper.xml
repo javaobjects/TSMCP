@@ -369,7 +369,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <!-- <insert id="insertSelective" parameterType="com.tencent.pojo.TsmcpUser"> -->
+
+
   <insert id="insertIntoTsmcpUser" parameterType="com.tencent.pojo.TsmcpUser">
     insert into tsmcp_user
     <trim prefix="(" suffix=")" suffixOverrides=",">

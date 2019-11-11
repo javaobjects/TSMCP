@@ -40,4 +40,19 @@ public class ITsmcpProductServiceImpl implements ITsmcpProductService {
         System.out.println(tsmcpProducts.get(0).getTsmcpFactory());
         return map;
     }
+
+
+    /**
+     *
+     * @param tsmcpProduct
+     * @return
+     * @author xianxian
+     * @create:2019-11-08
+     * @Description
+     */
+    @Override
+    public Boolean addProduct(TsmcpProduct tsmcpProduct) {
+        Boolean result = tsmcpProductMapper.addProduct(tsmcpProduct);
+        return result;
+    }
 }
