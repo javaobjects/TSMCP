@@ -118,19 +118,32 @@
   </select>
 
   <!--
-  查询所有产品
-  2019-11-07
+     * @author xianxian
+     * @create:2019-11-07
+     * @Description
+       查询所有产品
    -->
   <select id="selectAll2" resultMap="BaseResultMap">
     select tsmcp_product.*,tsmcp_factory.factory_name from tsmcp_product inner join tsmcp_factory
     on tsmcp_product.factory_id = tsmcp_factory.id
   </select>
 
+    <!--
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+      根据产品id删除产品
+    -->
+  <delete id="deleteProductByProductId" parameterType="java.lang.Integer">
+    delete from tsmcp_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tsmcp_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
   <delete id="deleteByExample" parameterType="com.tencent.pojo.TsmcpProductExample">
     delete from tsmcp_product
     <if test="_parameter != null">

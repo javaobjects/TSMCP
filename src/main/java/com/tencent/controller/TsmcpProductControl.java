@@ -69,4 +69,19 @@ public class TsmcpProductControl {
         Boolean result = iTsmcpProductService.addProduct(tsmcpProduct);
         return result;
     }
+
+    /**
+     * @param productId
+     * @return
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+     * 根据产品id删除产品
+     */
+    @RequestMapping("/deleteProductByProductId")
+    @ResponseBody
+    public Boolean deleteProductByProductId(Integer productId){
+        Boolean result = iTsmcpProductService.deleteProductByProductId(productId);
+        return result;
+    }
 }

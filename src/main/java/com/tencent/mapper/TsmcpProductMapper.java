@@ -48,4 +48,14 @@ public interface TsmcpProductMapper {
      * @Description
      */
     Boolean addProduct(TsmcpProduct tsmcpProduct);
+
+    /**
+     * @param productId
+     * @return
+     * @author xianxian
+     * @create:2019-11-11
+     * @Description
+     * 根据产品id删除产品
+     */
+    Boolean deleteProductByProductId(Integer productId);
 }
