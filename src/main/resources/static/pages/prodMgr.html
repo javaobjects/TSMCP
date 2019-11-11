@@ -294,10 +294,11 @@
          * 1. https://www.cnblogs.com/wenhainan/p/10446512.html
          * 2. https://www.cnblogs.com/xiashengwang/p/8087181.html
          * 3. https://www.cnblogs.com/GaiaBing/p/9317702.html
+         * 4. [重绘表格](https://blog.csdn.net/qcp1020/article/details/78919950)
          */
 
 
-        $('#prod_table_1').DataTable({
+        let table = $('#prod_table_1').DataTable({
             processing : true,//是否显示加载中提示
             autoWidth: false,//是否自动计算表格各列宽度
             info: true,//是否显示页数信息
@@ -406,6 +407,17 @@
                 beforeSend:function (XMLHttpRequest) {},
                 success:function (data,textStatus,XMLHttpRequest) {
                     console.info(data);
+                    if(data){
+                        //成功刷新表格
+                        table.ajax.url( '/selectAllProduct' ).load();
+                    }else{
+                        //失败给出提示
+                        $.gritter.add({
+                            title: '',
+                            text: '删除失败，请稍后再试。。。。'
+                        });
+                    }
+                    $('#product_Modal').modal('hide');
                 },
                 error:function (XMLHttpRequest,textStatus,errorThorwn) {
                     console.error(XMLHttpRequest);
