@@ -303,4 +303,15 @@
       factory_id = #{factoryId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!-- 查询所有设备的数量 -->
+  <select id="selectAlleq" resultType="java.lang.Integer">
+    SELECT count(1) FROM tsmcp_equipment
+  </select>
+
+  <!-- 查询所有故障的设备 -->
+  <select id="selectBadeq" resultType="java.lang.Integer">
+    SELECT count(1) FROM tsmcp_equipment WHERE equipment_status = 30
+  </select>
+
 </mapper>

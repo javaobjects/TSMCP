@@ -96,6 +96,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/selectAllPro").permitAll()
                 .antMatchers("/selectAllProduct").permitAll()
                 .antMatchers("/showregister").permitAll()
+                .antMatchers("/selectAllEq").permitAll()
+                .antMatchers("/selectBadEq").permitAll()
+                .antMatchers("/selectRate").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
