@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class TsmcpProductController {
+public class TsmcpProductOrderControl {
     @Autowired
     private ITsmcpProductOrderService iTsmcpProductOrderService;
 
