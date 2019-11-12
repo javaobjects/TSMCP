@@ -22,4 +22,10 @@ public class TsmcpProductOrderControl {
         List<TsmcpProductOrderSum> tsmcpProductOrderSumList = iTsmcpProductOrderService.selectOrderStatusSum();
         return tsmcpProductOrderSumList;
     }
+
+    @RequestMapping(value = "/selectNewOrder",method = RequestMethod.GET)
+    @ResponseBody
+    public Integer selectNewOrder(){
+        return iTsmcpProductOrderService.selectNewOrder();
+    }
 }

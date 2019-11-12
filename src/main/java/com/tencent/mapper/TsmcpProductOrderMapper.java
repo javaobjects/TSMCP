@@ -35,4 +35,6 @@ public interface TsmcpProductOrderMapper {
     int updateByPrimaryKey(TsmcpProductOrder record);
 
     List<TsmcpProductOrderSum> selectOrderStatusSum();
+
+    public Integer selectNewOrder();
 }

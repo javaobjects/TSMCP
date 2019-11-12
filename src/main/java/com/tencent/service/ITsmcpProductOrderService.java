@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ITsmcpProductOrderService {
     List<TsmcpProductOrderSum> selectOrderStatusSum();
+
+    public Integer selectNewOrder();
 }

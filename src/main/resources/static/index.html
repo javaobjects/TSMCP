@@ -249,8 +249,8 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="30" data-fgColor="#a8c77b" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">320</div>
-                                <div class="title">新订单</div>
+                                <div class="number" id="neworder">0</div>
+                                <div class="title" >新订单</div>
                             </div>
                         </div>
                     </div>
@@ -263,8 +263,8 @@
                                 <input class="knob"  data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="15"  data-fgColor="#b9baba" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">387</div>
-                                <div class="title">信息</div>
+                                <div class="number">100%</div>
+                                <div class="title">运行率</div>
                             </div>
                         </div>
                     </div>
@@ -412,6 +412,18 @@
         dataType: "json",
         success : function(data){
             $("#newUser").text("+"+data);
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/selectNewOrder',
+        dataType: "json",
+        success : function(data){
+            $("#neworder").text("+"+data);
         },
         error : function(mes){
             console.log("error:"+mes);
