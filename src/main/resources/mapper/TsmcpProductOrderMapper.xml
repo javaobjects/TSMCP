@@ -361,4 +361,8 @@
     union
     select order_status,count(order_status) order_status_sum from tsmcp_product_order where order_status = 50 and flag &lt;&gt; 0
   </select>
+  <!-- 七天内新增订单的数量 -->
+  <select id="selectNewOrder" resultType="java.lang.Integer">
+    SELECT count(1) FROM tsmcp_product_order where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(create_time)
+  </select>
 </mapper>

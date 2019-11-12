@@ -32,4 +32,10 @@ public interface TsmcpEquipmentMapper {
     int updateByPrimaryKeySelective(TsmcpEquipment record);
 
     int updateByPrimaryKey(TsmcpEquipment record);
+
+    //查询所有设备的数量
+    public Integer selectAlleq();
+
+    //查询所有故障的设备
+    public Integer selectBadeq();
 }

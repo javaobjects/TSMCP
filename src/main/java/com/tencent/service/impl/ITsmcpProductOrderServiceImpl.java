@@ -23,4 +23,11 @@ public class ITsmcpProductOrderServiceImpl implements ITsmcpProductOrderService 
     public List<TsmcpProductOrderSum> selectOrderStatusSum() {
         return tsmcpProductOrderMapper.selectOrderStatusSum();
     }
+
+    @Override
+    public Integer selectNewOrder() {
+        return tsmcpProductOrderMapper.selectNewOrder();
+    }
+
+
 }

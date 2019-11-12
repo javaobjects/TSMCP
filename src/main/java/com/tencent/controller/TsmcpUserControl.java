@@ -55,8 +55,14 @@ public class TsmcpUserControl {
         String name3 = principal.getName();
         List<String> list = new ArrayList<>();
         list.add(name3);
-        System.out.println(name3);
+        //System.out.println(name3);
         return list;
+    }
+
+    @RequestMapping(value = "/getNewUser",method = RequestMethod.GET)
+    @ResponseBody
+    public Integer selectNewUser(){
+        return iTsmcpUserService.selectNewUser();
     }
 
 
@@ -99,7 +105,6 @@ public class TsmcpUserControl {
             e.printStackTrace();
         }
     }
-
 
 
     /**
@@ -145,6 +150,14 @@ public class TsmcpUserControl {
     public Boolean insertIntoTsmcpUser(TsmcpUser tsmcpUser){
         Boolean result = iTsmcpUserService.insertIntoTsmcpUser(tsmcpUser);
         return result;
+    }
+
+
+
+    //跳转到注册页面接口
+    @RequestMapping(value = "/showregister",method = RequestMethod.GET)
+    public String showRegister(){
+        return "pages/register.html";
     }
 
     /**

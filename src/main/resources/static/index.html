@@ -16,9 +16,8 @@
     <link href="css/style_default.css" rel="stylesheet" id="style_color" />
     <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
     <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
-
-    <!--    <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />-->
-    <!--    <link href="assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />-->
+    <!-- <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" /> -->
+    <!-- <link href="assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" /> -->
 </head>
 <body class="fixed-top">
 <!-- BEGIN HEADER -->
@@ -222,7 +221,7 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="35" data-fgColor="#4CC5CD" data-bgColor="#ddd">
                             </div>
                             <div class="details">
-                                <div class="number">+33</div>
+                                <div class="number" id="newUser">0</div>
                                 <div class="title">新用户</div>
                             </div>
                         </div>
@@ -236,8 +235,8 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="65" data-fgColor="#e17f90" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">48705￥</div>
-                                <div class="title">销售额</div>
+                                <div class="number" id="badRate">0%</div>
+                                <div class="title">故障率</div>
                             </div>
                         </div>
                     </div>
@@ -250,8 +249,8 @@
                                 <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="30" data-fgColor="#a8c77b" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">+320</div>
-                                <div class="title">新订单</div>
+                                <div class="number" id="neworder">0</div>
+                                <div class="title" >新订单</div>
                             </div>
                         </div>
                     </div>
@@ -264,8 +263,8 @@
                                 <input class="knob"  data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="15"  data-fgColor="#b9baba" data-bgColor="#ddd"/>
                             </div>
                             <div class="details">
-                                <div class="number">387</div>
-                                <div class="title">信息</div>
+                                <div class="number">100%</div>
+                                <div class="title">运行率</div>
                             </div>
                         </div>
                     </div>
@@ -405,6 +404,46 @@
 <script src="js/echarts.min.js"></script>
 <script src="js/scripts.js"></script>
 <script>
+
+    //发起请求获取7天内的新用户
+    $.ajax({
+        type: 'GET',
+        url: '/getNewUser',
+        dataType: "json",
+        success : function(data){
+            $("#newUser").text("+"+data);
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/selectNewOrder',
+        dataType: "json",
+        success : function(data){
+            $("#neworder").text("+"+data);
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
+
+
+    //发起请求获取设备故障率
+    $.ajax({
+        type: 'GET',
+        url: '/selectRate',
+        dataType: "json",
+        success : function(data){
+            $("#badRate").text(data+"%");
+        },
+        error : function(mes){
+            console.log("error:"+mes);
+        }
+    });
+
     jQuery(document).ready(function() {
         // initiate layout and plugins
         // App.setMainPage(true);
@@ -520,25 +559,15 @@
                 name:'订单数量',
                 type:'bar',
                 barWidth: '60%',
-                data:[10, 52, 200, 334, 410, 330, 220, 410, 330, 220 , 12, 12]
+                data:[5, 5, 4, 3, 4, 3, 2, 4, 3, 2 , 1, 1]
             }
         ]
     };
     // 使用刚指定的配置项和数据显示图表。
     barChart.setOption(option);
 
-    //发起请求获取用户名
-    $.ajax({
-        type: 'GET',
-        url: '/getName',
-        dataType: "json",
-        success : function(data){
-            $(".username").text(data);
-        },
-        error : function(mes){
-            console.log("error:"+mes);
-        }
-    });
+
+
 
 </script>
 
